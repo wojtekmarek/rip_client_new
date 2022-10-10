@@ -1,0 +1,39 @@
+.anonse {
+    display:flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+	box-shadow: 11px 13px 7px 0px #78797a;
+	background:linear-gradient(to bottom, #fffcfc 5%, #d4d4d4 100%);
+	background-color:#fffcfc;
+	border-radius:10px;
+	border:1px solid #adadad;
+	color:#282e30;
+	font-family:Arial;
+	font-size:17px;
+	padding:32px 76px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #e1e2ed;
+}
+.anonsetitle {
+    width: 100%;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: 700;
+}
+.anonsedate {
+    width: 100%;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+.anonsscribe{
+    width: 100%;
+}
+
+.anonselist{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+
+}
