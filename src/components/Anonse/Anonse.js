@@ -2,7 +2,7 @@ import React,{Component} from "react";
 import store from"../../reduser/store";
 import TopMenu from "../TopMenu/TopMenu";
 import"./Anonse.css"
-const backendadress=store.backendadress;
+import serverurl from "../../reduser/store"
 
 class Anonse extends Component{
     state={
@@ -10,8 +10,8 @@ class Anonse extends Component{
     }
     
     componentDidMount= () =>{
-        console.log(backendadress);
-        fetch(backendadress+'/anonse/listanonse')
+        //console.log(serverurl.backendadress);
+        fetch(serverurl.backendadress+'/anonse/listanonse')
         .then(response => response.json())
         .then(json =>{
              this.setState({anonselist: json})
@@ -29,7 +29,8 @@ class Anonse extends Component{
 
         if(anonselist[0]!==undefined){
             anonselist.forEach((anons) => {
-                let anonsedata=anons.time_event.toString().slice(0,10).split("-").reverse().join("-")
+                console.log(typeof anons.time_event);
+                let anonsedata=anons.time_event.toString().slice(0,10).split("-").reverse().join("-");
                 list.push(<div className="anonse">
                     <div className="anonsetitle">
                         {anons.title}

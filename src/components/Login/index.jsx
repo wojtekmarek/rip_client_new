@@ -2,7 +2,7 @@ import { useState } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
 import styles from "./styles.module.css"
-
+import serverurl from "../../reduser/store"
 
 
 const Login = () => {
@@ -14,7 +14,7 @@ const handleChange = ({ currentTarget: input }) => {
 const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-        const url = "http://localhost:8000/auth"
+        const url = serverurl.backendadress+"/auth"
         const { data: res } = await axios.post(url, data)
         localStorage.setItem("token", res.data.token)
         localStorage.setItem("id", res.data.id)

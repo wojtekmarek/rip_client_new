@@ -1,8 +1,9 @@
-import { useState } from "react"
-import axios from "axios"
-import { Link, useNavigate } from "react-router-dom"
-import {Alert } from "react";
-import styles from "./styles.module.css"
+import { useState } from "react";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+//import {Alert } from "react";
+import styles from "./styles.module.css";
+import serverurl from "../../reduser/store";
 
 const Signup = () => {
     const [data, setData] = useState({
@@ -16,7 +17,7 @@ const Signup = () => {
     const handleChange = ({ currentTarget: input }) => {
          setData({ ...data, [input.name]: input.value })
     }
-    const createTwoButtonAlert = () =>{
+   /* const createTwoButtonAlert = () =>{
         Alert.alert(
             //res.message,
             "dodac resmesage", 
@@ -26,11 +27,11 @@ const Signup = () => {
               { text: "OK", onPress: () => navigate("/login")
               }
             ]);
-    }
+    }*/
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const url = "http://localhost:8000/userdb/registeruser"
+            const url = serverurl.backendadress+"/registeruser"
             const { data: res } = await axios.post(url, data)
             if(res){
                 if(res.status=200){
