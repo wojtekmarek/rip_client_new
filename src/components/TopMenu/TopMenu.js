@@ -52,7 +52,7 @@ class TopMenu extends Component{
                         :[<button className="topmenubuttonlog" onClick={this.handleLogin}>Zaloguj się </button>]}
                 </div>
             <div className="topmenurip">
-                <Link to="/login">
+                <Link to="/cmentarz">
                     <div className="topmenubutton" >
                         Cmentarz
                     </div>

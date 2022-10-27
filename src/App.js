@@ -4,6 +4,7 @@ import Signup from "./components/Singnup/Singnup"
 import Login from "./components/Login/Login"
 import Anonse from "./components/Anonse/Anonse"
 import Myaccount from "./components/Myaccount/Myaccount"
+import Graveyard from "./components/Graveyard/Graveyard"
 function App() {
 const user = localStorage.getItem("token")
 const id=localStorage.getItem("id")
@@ -13,6 +14,7 @@ return (
 <Route path="/signup" exact element={<Signup />} />
 <Route path="/login" exact element={<Login />} />
 <Route path="/anonse" element={<Anonse/>} />
+<Route path="/cmentarz" element={<Graveyard/>} />
 {user && id &&<Route path="/mojekonto" exact element={<Myaccount/>} />}
 <Route path="/mojekonto" element={<Navigate replace to="/login" />} />
 </Routes>
