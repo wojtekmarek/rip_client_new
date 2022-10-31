@@ -1,9 +1,10 @@
-import { Route, Routes, Navigate } from "react-router-dom"
-import Main from "./components/Main/Main"
-import Signup from "./components/Singnup/Singnup"
-import Login from "./components/Login/Login"
-import Anonse from "./components/Anonse/Anonse"
-import Myaccount from "./components/Myaccount/Myaccount"
+import React from "react";
+import { Route, Routes, Navigate } from "react-router-dom";
+import Main from "./components/Main/Main";
+import Signup from "./components/Singnup/Singnup";
+import Login from "./components/Login/Login";
+import Anonse from "./components/Anonse/Anonse";
+import Myaccount from "./components/Myaccount/Myaccount";
 function App() {
 const user = localStorage.getItem("token")
 const id=localStorage.getItem("id")
