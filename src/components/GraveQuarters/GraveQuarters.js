@@ -4,8 +4,7 @@ import "./styles.css"
 
 class GraveQuarters extends Component{
     state={
-        lightservice: Boolean,
-        cleanservice: Boolean
+        
     }
     
     componentDidMount= () =>{
@@ -19,43 +18,34 @@ class GraveQuarters extends Component{
  
     render(){
         
-        const{lightservice,cleanservice}=this.state;
+        
        
         return(
             <div>
                 <TopMenu/>
                 <div className="kontent">
-                   Zamów wybraną usługę cmentarną. Możesz zamówić zapalenie znicza lub czyszczenie grobu.
-                   <label>Wybierz grób</label>
-                   <div className="userdata">
+                <center>
+                    <h1><i><center>Zamów usługę</center></i></h1>
+                    <div className="wyborUslugi">
+                   <button>Sprzątanie grobów</button>
+                   <br></br><br></br>
+                   <button>Podlewanie kwiatów</button>
+                   <br></br><br></br>
+                   <button>Zapalenie małego znicza</button>
+                   <br></br><br></br>
+                   <button>Zapalenie średniego znicza</button>
+                   <br></br><br></br>
+                   <button>Zapalenie dużego znicza</button>
+                   <br></br><br></br>
+                   <button>Położenie kwiatów</button>
+                   <br></br>
+                   </div>
+                   <br></br>Cena: 22 zł <br></br>
                    
-                    <div className="userdatacolumn">
-                        
-                        
-                            <label>Usługa czyszczenia grobu</label>
-                            <input type="checkbox" className="inputdata" value={cleanservice}/>
-                           
-                      
-                        <input type="submit"></input>
-                        
-                    </div>
-                    <div className="userdatacolumn">
-                        
-                        
-                            <label>Usługa zapalenia znicza</label>
-                            <input type="checkbox" className="inputdata" value={lightservice}/>
-                           
-                      
-                        <input type="submit"></input>
-                        
-                    </div>
-                  
+                <button>Zamów</button>
+                   </center>
                 </div>
-
-
-
-                   
-                </div>
+                
             </div>
         )
     }

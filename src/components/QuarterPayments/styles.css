@@ -19,6 +19,26 @@
 	text-shadow:0px 1px 0px #e1e2ed;
 }
 
+.saldo{
+    display:flex;
+    flex-direction: row;
+    
+    margin-left: auto;
+  margin-right: auto;
+    box-sizing: border-box;
+	box-shadow: 11px 13px 7px 0px #78797a;
+	background:linear-gradient(to bottom, #fffcfc 5%, #d4d4d4 100%);
+	background-color:#fffcfc;
+	border-radius:10px;
+	border:1px solid #adadad;
+	color:#282e30;
+	font-family:Arial;
+	font-size:26px;
+	padding:32px 76px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #e1e2ed;
+}
+
 .userdata{
     display:flex;
     flex-direction: row;
@@ -47,4 +67,20 @@
 }
 .inputdata{
     width: 350px;
+}
+
+
+
+.divtabela{
+	display:flex;
+	clear:both;
+	width:50%;
+	flex-direction: column;
+	margin-left: auto;
+  margin-right: auto;
+}
+
+.tabela{
+	clear:both;
+	
 }

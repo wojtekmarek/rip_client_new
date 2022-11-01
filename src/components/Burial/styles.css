@@ -57,14 +57,14 @@ h3{
 
 .insidebutton {
 	box-shadow: 6px 2px 0px 0px #756a69;
-	background:linear-gradient(to bottom, #352735 5%, #1d1919 100%);
+	background:linear-gradient(to bottom, #636363 5%, #b3b1b1 100%);
 	background-color:#d1c9d1;
 	border-radius:10px;
 	border:1px solid #e6d5d4;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:Consolas;
+	
 	font-size:17px;
 	font-weight:bold;
 	padding:11px 76px;
@@ -73,7 +73,7 @@ h3{
 }
 
 .insidebutton:hover{
-	background:linear-gradient(to bottom, #683768 5%, #1d1919 100%);
+	background:linear-gradient(to bottom, #f3f3f3 5%, #928282 100%);
 }
 
 .userdata{
