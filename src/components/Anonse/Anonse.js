@@ -25,12 +25,18 @@ class Anonse extends Component{
         
         const{anonselist}=this.state;
         const list = []
-        console.log(anonselist);
+        
 
         if(anonselist[0]!==undefined){
             anonselist.forEach((anons) => {
                 console.log(anons);
-                let anonsedata=anons.time_event.toString().slice(0,10).split("-").reverse().join("-");
+                var anonsedata="";
+                if(anons.time_event != null)
+                    {
+                         anonsedata=anons.time_event.toString().slice(0,10).split("-").reverse().join("-");
+
+                    }
+                
                 console.log(anonsedata);
                 list.push(<div className="anonse">
                     <div className="anonsetitle">

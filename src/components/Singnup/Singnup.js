@@ -32,7 +32,7 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const url = serverurl.backendadress+"/registeruser"
+            const url = serverurl.backendadress+"/userdb/registeruser"
             const { data: res } = await axios.post(url, data)
             if(res){
                 if(res.status=200){
