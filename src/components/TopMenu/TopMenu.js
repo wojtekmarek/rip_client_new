@@ -66,16 +66,15 @@ class TopMenu extends Component {
                                 Pochówek
                             </div>
                         </Link>,
-                        <Link to="/ekshumacja">
-                            <div className="topmenubutton" >
-                                Ekshumacja
+                       <><Link to="/intencja">
+                            <div className="topmenubutton">
+                                Intencja mszy
                             </div>
-                        </Link>,
-                        <Link to="/platnoscikwatery">
-                            <div className="topmenubutton" >
-                                Płatności kwatery
-                            </div>
-                        </Link>
+                        </Link><Link to="/kwatery">
+                                <div className="topmenubutton">
+                                    Kwatery
+                                </div>
+                            </Link></>
                         ]
                     : []}
                     <Link to="/anonse">
@@ -88,6 +87,7 @@ class TopMenu extends Component {
                             Kontakt
                         </div>
                     </Link>
+                    
 
 
 
