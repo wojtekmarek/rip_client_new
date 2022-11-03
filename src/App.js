@@ -11,6 +11,8 @@ import QuarterPayments from "./components/QuarterPayments/QuarterPayments"
 import Kontakt from "./components/Contact/Contact"
 import Intentions from "./components/Intentions/Intentions"
 import GraveQuarters from "./components/GraveQuarters/GraveQuarters"
+import Order from "./components/Order/Order"
+
 function App() {
 const user = localStorage.getItem("token")
 const id=localStorage.getItem("id")
@@ -25,6 +27,7 @@ return (
 {user && id &&<Route path="/mojekonto" exact element={<Myaccount/>} />}
 <Route path="/mojekonto" element={<Navigate replace to="/login" />} />
 {user && id &&<Route path="/pochowek" exact element={<Burial/>} />}
+{user && id &&<Route path="/order" exact element={<Order/>} />}
 {user && id &&<Route path="/ekshumacja" exact element={<Exhumation/>} />}
 {user && id &&<Route path="/intencja" exact element={<Intentions/>} />}
 {user && id &&<Route path="/kwatery" exact element={<GraveQuarters/>} />}

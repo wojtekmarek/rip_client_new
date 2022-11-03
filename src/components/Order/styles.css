@@ -49,38 +49,12 @@
     width: 350px;
 }
 
-.divtabela{
-	display:flex;
-	clear:both;
-	width:50%;
-	flex-direction: column;
-	margin-left: auto;
-  margin-right: auto;
-}
-
-.tabela{
-	border:1px solid;
-	border-spacing: 0.5rem;
-	padding: 0.5rem;
-	clear:both;
-	margin-left: auto;
-  margin-right: auto;
-}
-
-tr{
-	border:1px solid;
-	border-spacing: 0.5rem;
-	padding: 0.5rem;
-	clear:both;
-	margin-left: auto;
-  margin-right: auto;
-}
-
-td, th{
-	border:1px solid;
-	border-spacing: 0.5rem;
-	padding: 0.5rem;
-	clear:both;
+.wyborUslugi{
+	border-radius:10px;
+	border:1px solid #adadad;
+	padding:32px 76px;
+	box-sizing: border-box;
+	box-shadow: 11px 13px 7px 0px #78797a;
 }
 
 .insidebutton {
