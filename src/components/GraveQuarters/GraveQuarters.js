@@ -1,6 +1,7 @@
 import TopMenu from "../TopMenu/TopMenu"
 import React,{Component} from "react";
 import "./styles.css"
+import { Link } from "react-router-dom";
 
 class GraveQuarters extends Component{
     state={
@@ -24,8 +25,8 @@ class GraveQuarters extends Component{
             <div>
                 <TopMenu/>
                 <div className="kontent">
-                <center>
-                    <h1><i><center>Zamów usługę</center></i></h1>
+                
+                    <h1>Zamów usługę</h1>
                     <div className="wyborUslugi">
                    <button>Sprzątanie grobów</button>
                    <br></br><br></br>
@@ -42,8 +43,8 @@ class GraveQuarters extends Component{
                    </div>
                    <br></br>Cena: 22 zł <br></br>
                    
-                <button>Zamów</button>
-                   </center>
+                <button className="insidebutton">Zamów</button>
+                   
                 </div>
                 
             </div>

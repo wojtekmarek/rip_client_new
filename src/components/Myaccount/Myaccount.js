@@ -4,6 +4,7 @@ import"./Myaccount.css"
 import store from"../../reduser/store";
 import axios from 'axios';
 import { string } from "prop-types";
+import serverurl from "../../reduser/store"
 const backendadress=store.backendadress;
 
 class Myaccount extends Component{
@@ -17,7 +18,10 @@ class Myaccount extends Component{
         ovnerriphousenr:string,
         ovnerripapartmentnr:string,
         ovnerripcity:string,
-        ovnerrippesel:string
+        ovnerrippesel:string,
+        listburial:JSON,
+        listexumation:JSON,
+        listgrave:JSON
     }
     
     componentDidMount= () =>{
@@ -31,7 +35,26 @@ class Myaccount extends Component{
                         userpassword: res.data.password,
                         userstatus:statususer});
        
-        
+         //console.log(serverurl.backendadress);
+         fetch(serverurl.backendadress+'/burial/listburial')
+         .then(response => response.json())
+         .then(json =>{
+              this.setState({listburial: json})
+         })
+
+          //console.log(serverurl.backendadress);
+        fetch(serverurl.backendadress+'/exhumation/listexumation')
+        .then(response => response.json())
+        .then(json =>{
+             this.setState({listexumation: json})
+        })
+
+         //console.log(serverurl.backendadress);
+         fetch(serverurl.backendadress+'/gravequarters/listgrave')
+         .then(response => response.json())
+         .then(json =>{
+              this.setState({listgrave: json})
+         })
        
                 if(statususer)
                 {
@@ -65,6 +88,77 @@ class Myaccount extends Component{
         const{useremail,userpassword,ovnerripadress,ovnerripapartmentnr,ovnerripcity,ovnerriphousenr,ovnerriplastname
         ,ovnerripname,ovnerrippesel,userstatus}=this.state;
        
+        const{listburial}=this.state;
+        const list = []
+        console.log(listburial);
+
+        const{listgrave}=this.state;
+        
+        console.log(listgrave);
+
+        const{listexumation}=this.state;
+        
+        console.log(listexumation);
+
+
+        if(listburial[0]!==undefined){
+            listburial.forEach((burial) => {
+                console.log(burial);
+                let burialdata=burial.time_event.toString().slice(0,10).split("-").reverse().join("-");
+                console.log(burialdata);
+                list.push(<div className="anonse">
+                    <div className="anonsetitle">
+                        {burial.title}
+                    </div>
+                    <div className="anonsedate">
+                        {burialdata}
+                    </div>
+                    <div className="anonsscribe">
+                        {burial.annonse}
+                    </div>
+                </div>
+            );
+            });
+        }
+        else if(listgrave[0]!==undefined){
+            listgrave.forEach((grave) => {
+                console.log(grave);
+                let gravedata=grave.time_event.toString().slice(0,10).split("-").reverse().join("-");
+                console.log(gravedata);
+                list.push(<div className="anonse">
+                    <div className="anonsetitle">
+                        {grave.title}
+                    </div>
+                    <div className="anonsedate">
+                        {gravedata}
+                    </div>
+                    <div className="anonsscribe">
+                        {grave.annonse}
+                    </div>
+                </div>
+            );
+            });
+        }
+        else if(listexumation[0]!==undefined){
+            listexumation.forEach((exumation) => {
+                console.log(exumation);
+                let exumationdata=exumation.time_event.toString().slice(0,10).split("-").reverse().join("-");
+                console.log(exumationdata);
+                list.push(<div className="anonse">
+                    <div className="anonsetitle">
+                        {exumation.title}
+                    </div>
+                    <div className="anonsedate">
+                        {exumationdata}
+                    </div>
+                    <div className="anonsscribe">
+                        {exumation.annonse}
+                    </div>
+                </div>
+            );
+            });
+        }
+else{}
         return(
             <div>
                 <TopMenu/>
@@ -98,7 +192,7 @@ class Myaccount extends Component{
 
                     </div>
                 </div>
-               
+                
               
             </div>
         )

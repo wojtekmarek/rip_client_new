@@ -1,5 +1,5 @@
 .kontent{
-    display:flex;
+    display: flex;
     flex-direction: row;
     width: 90%;
     margin-left: 5%;
@@ -17,10 +17,12 @@
 	padding:32px 76px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #e1e2ed;
+	justify-content: center;
+	text-align: center;
 }
 
 .userdata{
-    display:flex;
+    display: flex;
     flex-direction: row;
     width: 90%;
     margin-left: 5%;
@@ -49,38 +51,12 @@
     width: 350px;
 }
 
-.divtabela{
-	display:flex;
-	clear:both;
-	width:50%;
-	flex-direction: column;
-	margin-left: auto;
-  margin-right: auto;
-}
-
-.tabela{
-	border:1px solid;
-	border-spacing: 0.5rem;
-	padding: 0.5rem;
-	clear:both;
-	margin-left: auto;
-  margin-right: auto;
-}
-
-tr{
-	border:1px solid;
-	border-spacing: 0.5rem;
-	padding: 0.5rem;
-	clear:both;
-	margin-left: auto;
-  margin-right: auto;
-}
-
-td, th{
-	border:1px solid;
-	border-spacing: 0.5rem;
-	padding: 0.5rem;
-	clear:both;
+.wyborUslugi{
+	border-radius:10px;
+	border:1px solid #adadad;
+	padding:32px 76px;
+	box-sizing: border-box;
+	box-shadow: 11px 13px 7px 0px #78797a;
 }
 
 .insidebutton {
@@ -98,8 +74,11 @@ td, th{
 	padding:11px 76px;
 	text-decoration:none;
 	text-shadow:4px 5px 3px #241413;
+	margin: 0 auto;
 }
 
-.insidebutton:hover{
-	background:linear-gradient(to bottom, #f3f3f3 5%, #928282 100%);
+form{
+	margin: 0 auto;
+	
+	
 }

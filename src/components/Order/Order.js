@@ -25,7 +25,7 @@ class Order extends Component{
             <div>
                 <TopMenu/>
                 <div className="kontent">
-                <center>
+               
                     <h1><i><center>Zamów mszę</center></i></h1>
                     <div className="wyborUslugi">
                         Intencja<br></br>
@@ -45,7 +45,7 @@ class Order extends Component{
             
                    <br></br>
                    <button>Zamów</button>
-                   </center>
+                   
                 </div>
                 
             </div>
