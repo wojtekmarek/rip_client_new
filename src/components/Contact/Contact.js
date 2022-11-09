@@ -24,7 +24,7 @@ class Contact extends Component{
             <div>
                 <TopMenu/>
                 <div className="kontent">
-                    <center><b>
+                    <b>
                     <h1><i><center>Kontakt</center></i></h1>
                    Adres:
 <br></br>
@@ -45,7 +45,7 @@ class Contact extends Component{
                    uduchowiony30@wp.pl
 
                    </b>
-                   </center>
+                   
                 </div>
                
               

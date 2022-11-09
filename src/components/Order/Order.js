@@ -24,7 +24,7 @@ class Order extends Component{
         return(
             <div>
                 <TopMenu/>
-                <div className="kontent">
+                <div className="orderkontent">
                
                     <h1><i><center>Zamów mszę</center></i></h1>
                     <div className="wyborUslugi">

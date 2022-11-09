@@ -1,4 +1,28 @@
-.kontent{
+.intentionskontent{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-left: 5%;
+    margin-bottom: 15px;
+    margin-top: 40px;
+    box-sizing: border-box;
+	box-shadow: 11px 13px 7px 0px #78797a;
+	background:linear-gradient(to bottom, #fffcfc 5%, #d4d4d4 100%);
+	background-color:#fffcfc;
+	border-radius:10px;
+	border:1px solid #adadad;
+	color:#282e30;
+	font-family:Arial;
+	font-size:17px;
+	padding:32px 76px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #e1e2ed;
+	justify-content: center;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.userdataintentions{
     display: flex;
     flex-direction: row;
     width: 90%;
@@ -18,31 +42,10 @@
 	text-decoration:none;
 	text-shadow:0px 1px 0px #e1e2ed;
 	justify-content: center;
-	text-align: center;
+	margin: 0 auto;
 }
 
-.userdata{
-    display: flex;
-    flex-direction: row;
-    width: 90%;
-    margin-left: 5%;
-    margin-bottom: 15px;
-    margin-top: 40px;
-    box-sizing: border-box;
-	box-shadow: 11px 13px 7px 0px #78797a;
-	background:linear-gradient(to bottom, #fffcfc 5%, #d4d4d4 100%);
-	background-color:#fffcfc;
-	border-radius:10px;
-	border:1px solid #adadad;
-	color:#282e30;
-	font-family:Arial;
-	font-size:17px;
-	padding:32px 76px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #e1e2ed;
-}
-
-.userdatacolumn{
+.userdatacolumnintentions{
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -51,12 +54,15 @@
     width: 350px;
 }
 
-.wyborUslugi{
+.wyborUslugiintentions{
 	border-radius:10px;
 	border:1px solid #adadad;
 	padding:32px 76px;
 	box-sizing: border-box;
 	box-shadow: 11px 13px 7px 0px #78797a;
+	margin: 0 auto;
+	justify-content: center;
+	display: flex;
 }
 
 .insidebutton {
@@ -75,10 +81,18 @@
 	text-decoration:none;
 	text-shadow:4px 5px 3px #241413;
 	margin: 0 auto;
+	justify-content: center;
+	display: flex;
 }
 
 form{
 	margin: 0 auto;
 	
 	
+}
+
+h1{
+	display: flex;
+	margin: 0 auto;
+	justify-content: center;
 }

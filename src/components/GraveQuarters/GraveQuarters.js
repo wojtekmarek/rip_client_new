@@ -24,7 +24,7 @@ class GraveQuarters extends Component{
         return(
             <div>
                 <TopMenu/>
-                <div className="kontent">
+                <div className="kwaterykontent">
                 
                     <h1>Zamów usługę</h1>
                     <div className="wyborUslugi">
@@ -41,7 +41,7 @@ class GraveQuarters extends Component{
                    <button>Położenie kwiatów</button>
                    <br></br>
                    </div>
-                   <br></br>Cena: 22 zł <br></br>
+                   <p class="priceName"><br></br>Cena: 22 zł <br></br></p>
                    
                 <button className="insidebutton">Zamów</button>
                    

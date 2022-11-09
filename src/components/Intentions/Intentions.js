@@ -30,11 +30,11 @@ class Intentions extends Component{
             
             <div>
                 <TopMenu/>
-                <div className="kontent">
+                <div className="intentionskontent">
                
                <h1>Zamów mszę</h1>
 
-               <div className="wyborUslugi">
+               <div className="wyborUslugiintenions">
                 <form id="formularzintencji">
                    Intencja<br></br>
               <input type="text" maxlength="50" pattern="[A-Za-z]"></input>
