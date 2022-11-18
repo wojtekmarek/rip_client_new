@@ -1,11 +1,49 @@
 
-.Container{
+.Containerrip {
     width: 100%;
     display:flex;
-    height: 650px;
-    background-position: center; 
-    align-items: center;
+    align-content: center;
     justify-content: center;
+}
+#closebutton {
+    position: absolute;
+    top: 3px;
+    right: 10px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    width: 15px;
+    font-weight: 700;
+}
+#detailquater {
+    width: 300px;
+    height: 117px;
+    background-color: #d4d4d4;
+    color: black;
+    position: relative;
+    top: -16px;
+    left: 0px;
+    z-index: 5;
+}
+.Boczek {
+    margin-left: 30px;
+    height: 670px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.tlo1
+{
+    display: flex;
+    height: 670px;
+    position: relative;
+    box-shadow: 11px 13px 7px 0px #78797a;
+    background: linear-gradient(to bottom, #fffcfc 5%, #d4d4d4 100%);
+    background-color: #fffcfc;
+    border-radius: 10px;
+    border: 1px solid #adadad;
+    padding: 0px 32px;
+    text-decoration: none;
 }
 .Map{
     display:flex;
@@ -17,28 +55,47 @@
     background-image: url('mapka.png');
     width: 960px;
     height: 650px;
-    margin-top: 110px;
+    margin-top: 10px;
 
+}
+.RipFinder{
+    width: 350px;
 }
 .Find{
-    display:flex;
-    background-color: greenyellow;
-    height: 100px;
+    display: flex;
+    box-shadow: 11px 13px 7px 0px #78797a;
+    background: linear-gradient(to bottom, #fffcfc 5%, #d4d4d4 100%);
+    background-color: #fffcfc;
+    border-radius: 10px;
+    border: 1px solid #adadad;
+    height: 70px;
     width: 360px;
-    margin: 100px 20px 0px 50px;
-
+    /*margin: 145px 20px 0px 50px;
+    text-align: center;
+    vertical-align: middle;*/
+}
+[id="leb"]{
+    vertical-align: middle;
 }
 .Info{
-    display:flex;
-    background-color: brown;
-    height: 450px;
+    display: flex;
+    box-shadow: 11px 13px 7px 0px #78797a;
+    background: linear-gradient(to bottom, #fffcfc 5%, #d4d4d4 100%);
+    background-color: #fffcfc;
+    border-radius: 10px;
+    border: 1px solid #adadad;
+    height: 550px;
     width: 360px;
-    margin: 10px 20px 0px 50px;
+    
 
 }
 input{
     background-color: white;
-    width: 100%;
+    margin-left: 5px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    height: 25px;
+    text-size-adjust: auto;
 }
 h5{
 
@@ -46,6 +103,12 @@ h5{
     text-align: center;
     vertical-align: middle;
  
+}
+.isburial{
+    background-color: red;
+}
+.isnotburial{
+    background-color: blue;
 }
 .A{
     width: 165px;
@@ -111,12 +174,51 @@ h5{
     left: 178px;
 }
 .J{
-    width: 319px;
-    height: 323px;
+    display: inline-block;
+    width: 0;
+    height: 0;
     position: absolute;
-    top: 72px;
-    left: 557px;
-    background: yellow;
+    border-style: solid;
+    border-width: 0px 150px 150px 150px;
+    border-color: transparent transparent  transparent;
+    top: 160px;
+    left: 483px;
+    transform: rotate(90deg);
+}
+.J4{
+    display: inline-block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-style: solid;
+    border-width: 0px 150px 150px 150px;
+    border-color: transparent transparent  transparent;
+    top: 244px;
+    left: 567px;
+}
+.J3{
+    display: inline-block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-style: solid;
+    border-width: 0px 150px 150px 150px;
+    border-color: transparent transparent transparent;
+    top: 160px;
+    left: 650px;
+    transform: rotate(270deg);
+}
+.J2{
+    display: inline-block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-style: solid;
+    border-width: 0px 150px 150px 150px;
+    border-color: transparent transparent transparent;
+    top: 73px;
+    left: 567px;
+    transform: rotate(180deg);
 }
 .K{
     width: 198px;
@@ -124,7 +226,6 @@ h5{
     position: absolute;
     top: 407px;
     left: 678px;
-    background: yellow;
 }
 .L{
     width: 198px;
@@ -132,7 +233,6 @@ h5{
     position: absolute;
     top: 500px;
     left: 678px;
-    background: yellow;
 }
 .a1{
     width: 40px;
@@ -140,7 +240,6 @@ h5{
     position: absolute;
     top: 12px;
     left: 10px;
-    background: red;
     border: solid 1px;
     cursor: pointer;
 }
@@ -148,9 +247,8 @@ h5{
     width: 40px;
     height: 16px;
     position: absolute;
-    top: 38px;
-    left: 10px;
-    background: red;
+    top: 12px;
+    left: 60px;
     border: solid 1px;
     cursor: pointer;
 }
@@ -158,9 +256,8 @@ h5{
     width: 40px;
     height: 16px;
     position: absolute;
-    top: 64px;
-    left: 10px;
-    background: red;
+    top: 12px;
+    left: 110px;
     border: solid 1px;
     cursor: pointer;
 }
@@ -168,9 +265,8 @@ h5{
     width: 40px;
     height: 16px;
     position: absolute;
-    top: 90px;
+    top: 38px;
     left: 10px;
-    background: red;
     border: solid 1px;
     cursor: pointer;
 }
@@ -178,9 +274,8 @@ h5{
     width: 40px;
     height: 16px;
     position: absolute;
-    top: 12px;
+    top: 38px;
     left: 60px;
-    background: red;
     border: solid 1px;
     cursor: pointer;
 }
@@ -189,8 +284,7 @@ h5{
     height: 16px;
     position: absolute;
     top: 38px;
-    left: 60px;
-    background: red;
+    left: 110px;
     border: solid 1px;
     cursor: pointer;
 }
@@ -199,8 +293,7 @@ h5{
     height: 16px;
     position: absolute;
     top: 64px;
-    left: 60px;
-    background: red;
+    left: 10px;
     border: solid 1px;
     cursor: pointer;
 }
@@ -208,9 +301,8 @@ h5{
     width: 40px;
     height: 16px;
     position: absolute;
-    top: 90px;
+    top: 64px;
     left: 60px;
-    background: red;
     border: solid 1px;
     cursor: pointer;
 }
@@ -218,9 +310,8 @@ h5{
     width: 40px;
     height: 16px;
     position: absolute;
-    top: 12px;
+    top: 64px;
     left: 110px;
-    background: red;
     border: solid 1px;
     cursor: pointer;
 }
@@ -228,9 +319,8 @@ h5{
     width: 40px;
     height: 16px;
     position: absolute;
-    top: 38px;
-    left: 110px;
-    background: red;
+    top: 90px;
+    left: 10px;
     border: solid 1px;
     cursor: pointer;
 }
@@ -238,9 +328,8 @@ h5{
     width: 40px;
     height: 16px;
     position: absolute;
-    top: 64px;
-    left: 110px;
-    background: red;
+    top: 90px;
+    left: 60px;
     border: solid 1px;
     cursor: pointer;
 }
@@ -250,7 +339,114 @@ h5{
     position: absolute;
     top: 90px;
     left: 110px;
-    background: red;
+    border: solid 1px;
+    cursor: pointer;
+}
+.b1{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border: solid 1px;
+    cursor: pointer;
+}
+.b2{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 10px;
+    left: 36px;
+    border: solid 1px;
+    cursor: pointer;
+}
+.b3{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 10px;
+    left: 62px;
+    border: solid 1px;
+    cursor: pointer;
+}
+.b4{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 10px;
+    left: 88px;
+    border: solid 1px;
+    cursor: pointer;
+}
+.b5{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 10px;
+    left: 114px;
+    border: solid 1px;
+    cursor: pointer;
+}
+.b6{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 10px;
+    left: 140px;
+    border: solid 1px;
+    cursor: pointer;
+}
+.b7{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 10px;
+    left: 166px;
+    border: solid 1px;
+    cursor: pointer;
+}
+.b8{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 10px;
+    left: 192px;
+    border: solid 1px;
+    cursor: pointer;
+}
+.b9{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 10px;
+    left: 218px;
+    border: solid 1px;
+    cursor: pointer;
+}
+.b10{
+    width: 40px;
+    height: 16px;
+    position: absolute;
+    top: 58px;
+    left: 15px;
+    border: solid 1px;
+    cursor: pointer;
+}
+.b11{
+    width: 40px;
+    height: 16px;
+    position: absolute;
+    top: 58px;
+    left: 70px;
+    border: solid 1px;
+    cursor: pointer;
+}
+.b12{
+    width: 40px;
+    height: 16px;
+    position: absolute;
+    top: 58px;
+    left: 125px;
     border: solid 1px;
     cursor: pointer;
 }
@@ -258,369 +454,8 @@ h5{
     width: 40px;
     height: 16px;
     position: absolute;
-    top: 12px;
-    left: 10px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.b14{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 38px;
-    left: 10px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.b15{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 64px;
-    left: 10px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.b16{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 90px;
-    left: 10px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.b17{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 12px;
-    left: 60px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.b18{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 38px;
-    left: 60px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.b19{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 64px;
-    left: 60px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.b20{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 90px;
-    left: 60px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.b21{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 12px;
-    left: 110px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.b22{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 38px;
-    left: 110px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.b23{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 64px;
-    left: 110px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.b24{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 90px;
-    left: 110px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.c25{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 12px;
-    left: 10px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.c26{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 38px;
-    left: 10px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.c27{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 64px;
-    left: 10px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.c28{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 90px;
-    left: 10px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.c29{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 12px;
-    left: 60px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.c30{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 38px;
-    left: 60px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.c31{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 64px;
-    left: 60px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.c32{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 90px;
-    left: 60px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.c33{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 12px;
-    left: 110px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.c34{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 38px;
-    left: 110px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.c35{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 64px;
-    left: 110px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.c36{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 90px;
-    left: 110px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.d37{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.d38{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 36px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.d39{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 62px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.d40{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 88px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.d41{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 114px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.d42{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 140px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.d43{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 166px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.d44{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 192px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.d45{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 218px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.d46{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 58px;
-    left: 15px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.d47{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 58px;
-    left: 70px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.d48{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 58px;
-    left: 125px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.d49{
-    width: 40px;
-    height: 16px;
-    position: absolute;
     top: 58px;
     left: 180px;
-    background: red;
     border: solid 1px;
     cursor: pointer;
 }
@@ -630,693 +465,471 @@ h5{
     position: absolute;
     top: 10px;
     left: 10px;
-    background: red;
     border: solid 1px;
     cursor: pointer;
 }
-.e51{
+.c1{
     width: 16px;
     height: 40px;
     position: absolute;
     top: 10px;
-    left: 36px;
-    background: red;
+    left: 9px;
     border: solid 1px;
     cursor: pointer;
 }
-.e52{
+.c2{
     width: 16px;
     height: 40px;
     position: absolute;
     top: 10px;
-    left: 62px;
-    background: red;
+    left: 34px;
     border: solid 1px;
     cursor: pointer;
 }
-.e53{
+.c3{
     width: 16px;
     height: 40px;
     position: absolute;
     top: 10px;
-    left: 88px;
-    background: red;
+    left: 59px;
     border: solid 1px;
     cursor: pointer;
 }
-.e54{
+.c4{
     width: 16px;
     height: 40px;
     position: absolute;
     top: 10px;
-    left: 114px;
-    background: red;
+    left: 84px;
     border: solid 1px;
     cursor: pointer;
 }
-.e55{
+.c5{
     width: 16px;
     height: 40px;
     position: absolute;
     top: 10px;
-    left: 140px;
-    background: red;
+    left: 109px;
     border: solid 1px;
     cursor: pointer;
 }
-.e56{
+.c6{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 60px;
+    left: 9px;
+    border: solid 1px;
+    cursor: pointer;
+}
+.c7{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 60px;
+    left: 34px;
+    border: solid 1px;
+    cursor: pointer;
+}
+.c8{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 60px;
+    left: 59px;
+    border: solid 1px;
+    cursor: pointer;
+}
+.c9{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 60px;
+    left: 84px;
+    border: solid 1px;
+    cursor: pointer;
+}
+.c10{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 60px;
+    left: 109px;
+    border: solid 1px;
+    cursor: pointer;
+}
+.c11{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 110px;
+    left: 9px;
+    border: solid 1px;
+    cursor: pointer;
+}
+.c12{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 110px;
+    left: 34px;
+    border: solid 1px;
+    cursor: pointer;
+}
+.c13{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 110px;
+    left: 59px;
+    border: solid 1px;
+    cursor: pointer;
+}
+.c14{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 110px;
+    left: 84px;
+    border: solid 1px;
+    cursor: pointer;
+}
+.c15{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 110px;
+    left: 109px;
+    border: solid 1px;
+    cursor: pointer;
+}
+.d1{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 100px;
+    left: -90px;
+    border: solid 1px;
+    cursor: pointer;
+    transform: rotate(-45deg);
+}
+.d2{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 82px;
+    left: -72px;
+    border: solid 1px;
+    cursor: pointer;
+    transform: rotate(-45deg);
+}
+.d3{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 64px;
+    left: -54px;
+    border: solid 1px;
+    cursor: pointer;
+    transform: rotate(-45deg);
+}
+.d4{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 46px;
+    left: -36px;
+    border: solid 1px;
+    cursor: pointer;
+    transform: rotate(-45deg);
+}
+.d5{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 28px;
+    left: -18px;
+    border: solid 1px;
+    cursor: pointer;
+    transform: rotate(-45deg);
+}
+.d6{
     width: 16px;
     height: 40px;
     position: absolute;
     top: 10px;
-    left: 166px;
-    background: red;
+    left: 0px;
     border: solid 1px;
     cursor: pointer;
+    transform: rotate(-45deg);
 }
-.e57{
+.d7{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 100px;
+    left: -16px;
+    border: solid 1px;
+    cursor: pointer;
+    transform: rotate(-45deg);
+}
+.d8{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 82px;
+    left: 2px;
+    border: solid 1px;
+    cursor: pointer;
+    transform: rotate(-45deg);
+}
+.d9{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 64px;
+    left: 20px;
+    border: solid 1px;
+    cursor: pointer;
+    transform: rotate(-45deg);
+}
+.d10{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 46px;
+    left: 38px;
+    border: solid 1px;
+    cursor: pointer;
+    transform: rotate(-45deg);
+}
+.d11 {
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 100px;
+    left: 58px;
+    border: solid 1px;
+    cursor: pointer;
+    transform: rotate(-45deg);
+}
+.d12 {
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 82px;
+    left: 76px;
+    border: solid 1px;
+    cursor: pointer;
+    transform: rotate(-45deg);
+}
+.e1{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 82px;
+    left: 76px;
+    border: solid 1px;
+    cursor: pointer;
+    transform: rotate(135deg);
+}
+.e2{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 100px;
+    left: 58px;
+    border: solid 1px;
+    cursor: pointer;
+    transform: rotate(135deg);
+}
+.e3{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 46px;
+    left: 38px;
+    border: solid 1px;
+    cursor: pointer;
+    transform: rotate(135deg);
+}
+.e4{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 64px;
+    left: 20px;
+    border: solid 1px;
+    cursor: pointer;
+    transform: rotate(135deg);
+}
+.e5{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 82px;
+    left: 2px;
+    border: solid 1px;
+    cursor: pointer;
+    transform: rotate(135deg);
+}
+.e6{
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 100px;
+    left: -16px;
+    border: solid 1px;
+    cursor: pointer;
+    transform: rotate(135deg);
+}
+.e7 {
     width: 16px;
     height: 40px;
     position: absolute;
     top: 10px;
-    left: 192px;
-    background: red;
+    left: 0px;
     border: solid 1px;
     cursor: pointer;
+    transform: rotate(135deg);
 }
-.e58{
+.e8 {
     width: 16px;
     height: 40px;
     position: absolute;
-    top: 10px;
-    left: 218px;
-    background: red;
+    top: 28px;
+    left: -18px;
     border: solid 1px;
     cursor: pointer;
+    transform: rotate(135deg);
 }
-.e59{
-    width: 40px;
-    height: 16px;
+.e9{
+    width: 16px;
+    height: 40px;
     position: absolute;
-    top: 58px;
-    left: 15px;
-    background: red;
+    top: 46px;
+    left: -36px;
     border: solid 1px;
     cursor: pointer;
+    transform: rotate(135deg);
 }
-.e60{
-    width: 40px;
-    height: 16px;
+.e10{
+    width: 16px;
+    height: 40px;
     position: absolute;
-    top: 58px;
-    left: 70px;
-    background: red;
+    top: 64px;
+    left: -54px;
     border: solid 1px;
     cursor: pointer;
+    transform: rotate(135deg);
 }
-.e61{
-    width: 40px;
-    height: 16px;
+.e11{
+    width: 16px;
+    height: 40px;
     position: absolute;
-    top: 58px;
-    left: 125px;
-    background: red;
+    top: 82px;
+    left: -72px;
     border: solid 1px;
     cursor: pointer;
+    transform: rotate(135deg);
 }
-.e62{
-    width: 40px;
-    height: 16px;
+.e12{
+    width: 16px;
+    height: 40px;
     position: absolute;
-    top: 58px;
-    left: 180px;
-    background: red;
+    top: 100px;
+    left: -90px;
     border: solid 1px;
     cursor: pointer;
+    transform: rotate(135deg);
 }
-.f63{
+.k1{
     width: 16px;
     height: 40px;
     position: absolute;
     top: 10px;
     left: 10px;
-    background: red;
     border: solid 1px;
     cursor: pointer;
 }
-.f64{
+.k2{
     width: 16px;
     height: 40px;
     position: absolute;
     top: 10px;
     left: 36px;
-    background: red;
     border: solid 1px;
     cursor: pointer;
 }
-.f65{
+.k3{
     width: 16px;
     height: 40px;
     position: absolute;
     top: 10px;
     left: 62px;
-    background: red;
     border: solid 1px;
     cursor: pointer;
 }
-.f66{
+.k4{
     width: 16px;
     height: 40px;
     position: absolute;
     top: 10px;
     left: 88px;
-    background: red;
     border: solid 1px;
     cursor: pointer;
 }
-.f67{
+.k5{
     width: 16px;
     height: 40px;
     position: absolute;
     top: 10px;
     left: 114px;
-    background: red;
     border: solid 1px;
     cursor: pointer;
 }
-.f68{
+.k6{
     width: 16px;
     height: 40px;
     position: absolute;
     top: 10px;
     left: 140px;
-    background: red;
     border: solid 1px;
     cursor: pointer;
 }
-.f69{
+.k7{
     width: 16px;
     height: 40px;
     position: absolute;
     top: 10px;
     left: 166px;
-    background: red;
     border: solid 1px;
     cursor: pointer;
 }
-.f70{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 192px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.f71{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 218px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.f72{
+.k8{
     width: 40px;
     height: 16px;
     position: absolute;
     top: 58px;
-    left: 15px;
-    background: red;
+    left: 20px;
     border: solid 1px;
     cursor: pointer;
 }
-.f73{
+.k9{
     width: 40px;
     height: 16px;
     position: absolute;
     top: 58px;
-    left: 70px;
-    background: red;
+    left: 80px;
     border: solid 1px;
     cursor: pointer;
 }
-.f74{
+.k10{
     width: 40px;
     height: 16px;
     position: absolute;
     top: 58px;
-    left: 125px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.f75{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 58px;
-    left: 180px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.g76{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.g77{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 36px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.g78{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 62px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.g79{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 88px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.g80{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 114px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.g81{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
     left: 140px;
-    background: red;
     border: solid 1px;
     cursor: pointer;
-}
-.g82{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 166px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.g83{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 192px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.g84{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 218px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.g85{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 58px;
-    left: 15px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.g86{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 58px;
-    left: 70px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.g87{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 58px;
-    left: 125px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.g88{
-    width: 40px;
-    height: 16px;
-    position: absolute;
-    top: 58px;
-    left: 180px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.h89{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 9px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.h90{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 34px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.h91{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 59px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.h92{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 84px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.h93{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 109px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.h94{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 60px;
-    left: 9px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.h95{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 60px;
-    left: 34px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.h96{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 60px;
-    left: 59px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.h97{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 60px;
-    left: 84px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.h98{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 60px;
-    left: 109px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.h99{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 110px;
-    left: 9px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.h100{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 110px;
-    left: 34px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.h101{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 110px;
-    left: 59px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.h102{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 110px;
-    left: 84px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.h103{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 110px;
-    left: 109px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.i104{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 9px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.i105{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 34px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.i106{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 59px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.i107{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 84px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.i108{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 109px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.i109{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 60px;
-    left: 9px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.i110{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 60px;
-    left: 34px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.i111{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 60px;
-    left: 59px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.i112{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 60px;
-    left: 84px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.i113{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 60px;
-    left: 109px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.i114{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 110px;
-    left: 9px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.i115{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 110px;
-    left: 34px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.i116{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 110px;
-    left: 59px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.i117{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 110px;
-    left: 84px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.i118{
-    width: 16px;
-    height: 40px;
-    position: absolute;
-    top: 110px;
-    left: 109px;
-    background: red;
-    border: solid 1px;
-    cursor: pointer;
-}
-.isburial{
-    background-color: red;
-}
-.isnotburial{
-    background-color: blue;
 }

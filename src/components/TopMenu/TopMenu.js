@@ -27,7 +27,7 @@ class TopMenu extends Component {
 
         window.location = "/"
     }
-    handleLogin = () => {
+    handleLogin = () => { 
 
         window.location = "/login"
     }
@@ -66,6 +66,7 @@ class TopMenu extends Component {
                                 Pochówek
                             </div>
                         </Link>,
+
                         <Link to="/ekshumacja" key={12}>
                             <div className="topmenubutton"  key={13}>
                                 Ekshumacja
@@ -75,7 +76,18 @@ class TopMenu extends Component {
                             <div className="topmenubutton" key={15}>
                                 Płatności kwatery
                             </div>
-                        </Link>
+                        </Link>,
+
+                       <><Link to="/intencja">
+                            <div className="topmenubutton">
+                                Intencja mszy
+                            </div>
+                        </Link><Link to="/kwatery">
+                                <div className="topmenubutton">
+                                    Kwatery
+                                </div>
+                            </Link></>
+
                         ]
                     : []}
                     <Link to="/anonse" key={16}>
@@ -88,6 +100,7 @@ class TopMenu extends Component {
                             Kontakt
                         </div>
                     </Link>
+                    
 
 
 

@@ -1,6 +1,7 @@
 import TopMenu from "../TopMenu/TopMenu"
 import React, { Component } from "react";
 import "./styles.css"
+import { Link } from "react-router-dom";
 
 class Burial extends Component {
     state = {
@@ -36,9 +37,19 @@ class Burial extends Component {
 
                     </div>
                     </div>
+                    <Link to="/ekshumacja">
+                            <div className="insidebutton" >
+                                Ekshumacja
+                            </div>
+                        </Link>,
+                        <Link to="/platnoscikwatery">
+                            <div className="insidebutton" >
+                                Płatności kwatery
+                            </div>
+                        </Link>
                 </div>
 
-
+                
 
             </div>
         )

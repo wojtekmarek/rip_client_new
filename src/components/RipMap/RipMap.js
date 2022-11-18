@@ -1,12 +1,22 @@
-import React,{Component} from "react";
+import React,{ Component}from "react";
+import * as ReactDOM from 'react-dom';
 import"./RipMap.css"
+import axios from 'axios';
 import initialState from "../../reduser/store"
 
 class RipMap extends Component{
+    constructor(props) {
+        super(props);
+        
+        this.state={
+        visiblelist: [],
+        ripdetail:[{"e":1}],
+        showripdetail:false
+    };
+    
+    this.clikgrave= this.clikgrave.bind(this);
+}
 
-   state={
-        visiblelist: []
-    }
     componentDidMount = () => {
       
         console.log(initialState.backendadress);
@@ -16,444 +26,722 @@ class RipMap extends Component{
             console.log(json);
             this.setState({visiblelist: json})
         })
-        /*.then(response => {
-            console.log(typeof response.body);
-            console.log(response);
-            })
-      
-      /*  .then(json =>{
-            console.log(typeof json);
-            console.log(json);
-        })
-      
-*/
+
 
 
     }
+   
+  
+     clikgrave = async (e) =>{  
+        //console.log(e.target.id);
+        if(!this.state.showripdetail){
+            this.setState({showripdetail:true});
+            var config = {
+              method: 'get',
+              url: initialState.backendadress+'/gravequarters/sendquaterdetail',
+              headers: { 
+                'Content-Type': 'application/json'
+              },
+            
+              params : {
+              "id": Number(e.target.id)
+            }
+            };
+            
+            await axios(config)
+           .then(async response =>{
+               this.setState({ripdetail:response.data});
+           })
+            .catch(function (error) {
+              console.log(error);
+              
+            });
 
-    clikgrave(id) {
-        
-        console.log('You clicked grave' +id);
-      }
-
+           var innerhtml='<div id="close"></div>';
+           //dopisz dane 
+           this.state.ripdetail.map(val => (                
+                innerhtml= innerhtml +"imie:"+val.Namedeceased+'</br>' 
+           ));
+            var b = document.getElementById(e.target.id);
+           var a = document.createElement("div");
+            a.setAttribute('id',"detailquater");
+            a.innerHTML=innerhtml;
+            b.appendChild(a);
+           // var listonquater=React.createElement("div",{id:"detailquaterlist"},innerhtml)
+            var close=React.createElement("div",{id:"closebutton",
+                                           onClick:() => {document.getElementById('detailquater').remove();this.setState({showripdetail:false});}
+                           
+                                       },"X"
+                                           );
+         // b.appendChild(listonquater);
+        //  b.appendChild(close);C:\Users\piotr\Desktop\studia\szkielety\client\clientrip\src\components\RipMap\RipMap.js
+           ReactDOM.render(close, document.getElementById("close"));
+        }
+       
+              
+   
+             }
+   
+         //
+   
     
     render(){
-        const{visiblelist}=this.state;
+       
+        console.log(this, "render");
 
+       /* ripdetail.forEach((rip) => {
+            console.log(rip);
+            ripdetail.push(<div className="rip">
+                <div className="namedeceased">
+                    {rip.Namedeceased[1]}
+                </div>
+                <div className="lastnamedeceased">
+                    {rip.LastNamedeceased[1]}
+                </div>
+
+            </div>
+            );
+        });*/
+           
+            
        
     return(
-    <div>
-        
-        <div className="Container">
-  
+   
+       
+        <div className="Containerrip">
+            <div className="tlo1">
                 <div className="Map">
                 <div className="A">
-                    <div className={"a1 "+ (this.state.visiblelist[0] ? 'isburial' : 'isnotburial')} id="1" onClick={this.clikgrave(this.id)}>
-                        <h5>1</h5>
+                    A
+                    <div className={"a1 "+ (this.state.visiblelist[0] ? 'isburial' : 'isnotburial')} id="1" onClick={this.clikgrave}>
+                       <h5>1</h5>
                     </div>
-                    <div className="a2" id="2">
+                    <div className={"a2 "+ (this.state.visiblelist[1] ? 'isburial' : 'isnotburial')} id="2" onClick={this.clikgrave}>
                         <h5>2</h5>
                     </div>
-                    <div className="a3" id="3">
+                    <div className={"a3 "+ (this.state.visiblelist[2] ? 'isburial' : 'isnotburial')} id="3" onClick={this.clikgrave}>
                         <h5>3</h5>
                     </div>
-                    <div className="a4" id="4">
+                    <div className={"a4 "+ (this.state.visiblelist[3] ? 'isburial' : 'isnotburial')} id="4" onClick={this.clikgrave}>
                         <h5>4</h5>
                     </div>
-                    <div className="a5" id="5">
+                    <div className={"a5 "+ (this.state.visiblelist[4] ? 'isburial' : 'isnotburial')} id="5" onClick={this.clikgrave}>
                         <h5>5</h5>
                     </div>
-                    <div className="a6" id="6">
+                    <div className={"a6 "+ (this.state.visiblelist[5] ? 'isburial' : 'isnotburial')} id="6" onClick={this.clikgrave}>
                         <h5>6</h5>
                     </div>
-                    <div className="a7" id="7">
+                    <div className={"a7 "+ (this.state.visiblelist[6] ? 'isburial' : 'isnotburial')} id="7" onClick={this.clikgrave}>
                         <h5>7</h5>
                     </div>
-                    <div className="a8" id="8">
+                    <div className={"a8 "+ (this.state.visiblelist[7] ? 'isburial' : 'isnotburial')} id="8" onClick={this.clikgrave}>
                         <h5>8</h5>
                     </div>
-                    <div className="a9" id="9">
+                    <div className={"a9 "+ (this.state.visiblelist[8] ? 'isburial' : 'isnotburial')} id="9" onClick={this.clikgrave}>
                         <h5>9</h5>
                     </div>
-                    <div className="a10" id="10">
+                    <div className={"a10 "+ (this.state.visiblelist[9] ? 'isburial' : 'isnotburial')} id="10" onClick={this.clikgrave}>
                         <h5>10</h5>
                     </div>
-                    <div className="a11" id="11">
+                    <div className={"a11 "+ (this.state.visiblelist[10] ? 'isburial' : 'isnotburial')} id="11" onClick={this.clikgrave}>
                         <h5>11</h5>
                     </div>
-                    <div className="a12" id="12">
+                    <div className={"a12 "+ (this.state.visiblelist[11] ? 'isburial' : 'isnotburial')} id="12" onClick={this.clikgrave}>
                         <h5>12</h5>
                     </div>
                 
                 </div>
                 <div className="B">
-                    <div className={"a1 "+ (this.state.visiblelist[0] ? 'isburial' : 'isnotburial')} id="13">
-                        <h5>13</h5>
+                    B
+                    <div className={"a1 "+ (this.state.visiblelist[12] ? 'isburial' : 'isnotburial')} id="13" onClick={this.clikgrave}>
+                        <h5>1</h5>
                     </div>
-                    <div className="b14" id="14">
-                        <h5>14</h5>
+                    <div className={"a2 "+ (this.state.visiblelist[13] ? 'isburial' : 'isnotburial')} id="14" onClick={this.clikgrave}>
+                        <h5>2</h5>
                     </div>
-                    <div className="b15" id="15">
-                        <h5>15</h5>
+                    <div className={"a3 "+ (this.state.visiblelist[14] ? 'isburial' : 'isnotburial')} id="15" onClick={this.clikgrave}>
+                        <h5>3</h5>
                     </div>
-                    <div className="b16" id="16">
-                        <h5>16</h5>
+                    <div className={"a4 "+ (this.state.visiblelist[15] ? 'isburial' : 'isnotburial')} id="16" onClick={this.clikgrave}>
+                        <h5>4</h5>
                     </div>
-                    <div className="b17" id="17">
-                        <h5>17</h5>
+                    <div className={"a5 "+ (this.state.visiblelist[16] ? 'isburial' : 'isnotburial')} id="17" onClick={this.clikgrave}>
+                        <h5>5</h5>
                     </div>
-                    <div className="b18" id="18">
-                        <h5>18</h5>
+                    <div className={"a6 "+ (this.state.visiblelist[17] ? 'isburial' : 'isnotburial')} id="18" onClick={this.clikgrave}>
+                        <h5>6</h5>
                     </div>
-                    <div className="b19" id="19">
-                        <h5>19</h5>
+                    <div className={"a7 "+ (this.state.visiblelist[18] ? 'isburial' : 'isnotburial')} id="19" onClick={this.clikgrave}>
+                        <h5>7</h5>
                     </div>
-                    <div className="b20" id="b20">
-                        <h5>20</h5>
+                    <div className={"a8 "+ (this.state.visiblelist[19] ? 'isburial' : 'isnotburial')} id="20" onClick={this.clikgrave}>
+                        <h5>8</h5>
                     </div>
-                    <div className="b21" id="b21">
-                        <h5>21</h5>
+                    <div className={"a9 "+ (this.state.visiblelist[20] ? 'isburial' : 'isnotburial')} id="21" onClick={this.clikgrave}>
+                        <h5>9</h5>
                     </div>
-                    <div className="b22" id="22">
-                        <h5>22</h5>
+                    <div className={"a10 "+ (this.state.visiblelist[21] ? 'isburial' : 'isnotburial')} id="22" onClick={this.clikgrave}>
+                        <h5>10</h5>
                     </div>
-                    <div className="b23" id="23">
-                        <h5>23</h5>
+                    <div className={"a11 "+ (this.state.visiblelist[22] ? 'isburial' : 'isnotburial')} id="23" onClick={this.clikgrave}>
+                        <h5>11</h5>
                     </div>
-                    <div className="b24" id="24">
-                        <h5>24</h5>
+                    <div className={"a12 "+ (this.state.visiblelist[23] ? 'isburial' : 'isnotburial')} id="24" onClick={this.clikgrave}>
+                        <h5>12</h5>
                     </div>
                         
                 </div>
                 <div className="C">
-                    <div className="c25" id="c25">
-                        <h5>25</h5>
+                    C
+                    <div className={"a1 "+ (this.state.visiblelist[24] ? 'isburial' : 'isnotburial')} id="25" onClick={this.clikgrave}>
+                       <h5>1</h5>
                     </div>
-                    <div className="c26" id="26">
-                        <h5>26</h5>
+                    <div className={"a2 "+ (this.state.visiblelist[25] ? 'isburial' : 'isnotburial')} id="26" onClick={this.clikgrave}>
+                        <h5>2</h5>
                     </div>
-                    <div className="c27" id="27">
-                        <h5>27</h5>
+                    <div className={"a3 "+ (this.state.visiblelist[26] ? 'isburial' : 'isnotburial')} id="27" onClick={this.clikgrave}>
+                        <h5>3</h5>
                     </div>
-                    <div className="c28" id="28">
-                        <h5>28</h5>
+                    <div className={"a4 "+ (this.state.visiblelist[27] ? 'isburial' : 'isnotburial')} id="28" onClick={this.clikgrave}>
+                        <h5>4</h5>
                     </div>
-                    <div className="c29" id="29">
-                        <h5>29</h5>
+                    <div className={"a5 "+ (this.state.visiblelist[28] ? 'isburial' : 'isnotburial')} id="29" onClick={this.clikgrave}>
+                        <h5>5</h5>
                     </div>
-                    <div className="c30" id="30">
-                        <h5>30</h5>
+                    <div className={"a6 "+ (this.state.visiblelist[29] ? 'isburial' : 'isnotburial')} id="30" onClick={this.clikgrave}>
+                        <h5>6</h5>
                     </div>
-                    <div className="c31" id="31">
-                        <h5>31</h5>
+                    <div className={"a7 "+ (this.state.visiblelist[30] ? 'isburial' : 'isnotburial')} id="31" onClick={this.clikgrave}>
+                        <h5>7</h5>
                     </div>
-                    <div className="c32" id="32">
-                        <h5>32</h5>
+                    <div className={"a8 "+ (this.state.visiblelist[31] ? 'isburial' : 'isnotburial')} id="32" onClick={this.clikgrave}>
+                        <h5>8</h5>
                     </div>
-                    <div className="c33" id="33">
-                        <h5>33</h5>
+                    <div className={"a9 "+ (this.state.visiblelist[32] ? 'isburial' : 'isnotburial')} id="33" onClick={this.clikgrave}>
+                        <h5>9</h5>
                     </div>
-                    <div className="c34" id="34">
-                        <h5>34</h5>
+                    <div className={"a10 "+ (this.state.visiblelist[33] ? 'isburial' : 'isnotburial')} id="34" onClick={this.clikgrave}>
+                        <h5>10</h5>
                     </div>
-                    <div className="c35" id="35">
-                        <h5>35</h5>
+                    <div className={"a11 "+ (this.state.visiblelist[34] ? 'isburial' : 'isnotburial')} id="35" onClick={this.clikgrave}>
+                        <h5>11</h5>
                     </div>
-                    <div className="c36" id="36">
-                        <h5>36</h5>
+                    <div className={"a12 "+ (this.state.visiblelist[35] ? 'isburial' : 'isnotburial')} id="36" onClick={this.clikgrave}>
+                        <h5>12</h5>
                     </div>
                         
                 </div>
                 <div className="D">
-                     <div className="d37" id="37">
-                        <h5>37</h5>
-                    </div> 
-                    <div className="d38" id="38">
-                        <h5>38</h5>
-                    </div> 
-                    <div className="d39" id="39">
-                        <h5>39</h5>
-                    </div> 
-                    <div className="d40" id="40">
-                        <h5>40</h5>
-                    </div> 
-                    <div className="d41" id="41">
-                        <h5>41</h5>
-                    </div> 
-                    <div className="d42" id="42">
-                        <h5>42</h5>
-                    </div> 
-                    <div className="d43" id="43">
-                        <h5>43</h5>
-                    </div> 
-                    <div className="d44" id="44">
-                        <h5>44</h5>
-                    </div> 
-                    <div className="d45" id="45">
-                        <h5>45</h5>
-                    </div> 
-                    <div className="d46" id="46">
-                        <h5>46</h5>
+                    D
+                    <div className={"b1 "+ (this.state.visiblelist[36] ? 'isburial' : 'isnotburial')} id="37" onClick={this.clikgrave}>
+                       <h5>1</h5>
                     </div>
-                    <div className="d47" id="47">
-                        <h5>47</h5>
+                    <div className={"b2 "+ (this.state.visiblelist[37] ? 'isburial' : 'isnotburial')} id="38" onClick={this.clikgrave}>
+                        <h5>2</h5>
                     </div>
-                    <div className="d48" id="48">
-                        <h5>48</h5>
+                    <div className={"b3 "+ (this.state.visiblelist[38] ? 'isburial' : 'isnotburial')} id="39" onClick={this.clikgrave}>
+                        <h5>3</h5>
                     </div>
-                    <div className="d49" id="49">
-                        <h5>49</h5>
+                    <div className={"b4 "+ (this.state.visiblelist[39] ? 'isburial' : 'isnotburial')} id="40" onClick={this.clikgrave}>
+                        <h5>4</h5>
+                    </div>
+                    <div className={"b5 "+ (this.state.visiblelist[40] ? 'isburial' : 'isnotburial')} id="41" onClick={this.clikgrave}>
+                        <h5>5</h5>
+                    </div>
+                    <div className={"b6 "+ (this.state.visiblelist[41] ? 'isburial' : 'isnotburial')} id="42" onClick={this.clikgrave}>
+                        <h5>6</h5>
+                    </div>
+                    <div className={"b7 "+ (this.state.visiblelist[42] ? 'isburial' : 'isnotburial')} id="43" onClick={this.clikgrave}>
+                        <h5>7</h5>
+                    </div>
+                    <div className={"b8 "+ (this.state.visiblelist[43] ? 'isburial' : 'isnotburial')} id="44" onClick={this.clikgrave}>
+                        <h5>8</h5>
+                    </div>
+                    <div className={"b9 "+ (this.state.visiblelist[44] ? 'isburial' : 'isnotburial')} id="45" onClick={this.clikgrave}>
+                        <h5>9</h5>
+                    </div>
+                    <div className={"b10 "+ (this.state.visiblelist[45] ? 'isburial' : 'isnotburial')} id="46" onClick={this.clikgrave}>
+                        <h5>10</h5>
+                    </div>
+                    <div className={"b11 "+ (this.state.visiblelist[46] ? 'isburial' : 'isnotburial')} id="47" onClick={this.clikgrave}>
+                        <h5>11</h5>
+                    </div>
+                    <div className={"b12 "+ (this.state.visiblelist[47] ? 'isburial' : 'isnotburial')} id="48" onClick={this.clikgrave}>
+                        <h5>12</h5>
+                    </div>
+                    <div className={"b13 "+ (this.state.visiblelist[48] ? 'isburial' : 'isnotburial')} id="49" onClick={this.clikgrave}>
+                        <h5>13</h5>
                     </div>
                 </div>  
                 <div className="E">
-                    <div className="e50" id="50">
-                        <h5>50</h5>
-                    </div> 
-                    <div className="e51" id="51">
-                        <h5>51</h5>
-                    </div> 
-                    <div className="e52" id="52">
-                        <h5>52</h5>
-                    </div> 
-                    <div className="e53" id="53">
-                        <h5>53</h5>
-                    </div> 
-                    <div className="e54" id="54">
-                        <h5>54</h5>
-                    </div> 
-                    <div className="e55" id="55">
-                        <h5>55</h5>
-                    </div> 
-                    <div className="e56" id="56">
-                        <h5>56</h5>
-                    </div> 
-                    <div className="e57" id="57">
-                        <h5>57</h5>
-                    </div> 
-                    <div className="e58" id="58">
-                        <h5>58</h5>
-                    </div> 
-                    <div className="e59" id="59">
-                        <h5>59</h5>
+                    E
+                    <div className={"b1 "+ (this.state.visiblelist[49] ? 'isburial' : 'isnotburial')} id="50" onClick={this.clikgrave}>
+                       <h5>1</h5>
                     </div>
-                    <div className="e60" id="60">
-                        <h5>60</h5>
+                    <div className={"b2 "+ (this.state.visiblelist[50] ? 'isburial' : 'isnotburial')} id="51" onClick={this.clikgrave}>
+                        <h5>2</h5>
                     </div>
-                    <div className="e61" id="61">
-                        <h5>61</h5>
+                    <div className={"b3 "+ (this.state.visiblelist[51] ? 'isburial' : 'isnotburial')} id="52" onClick={this.clikgrave}>
+                        <h5>3</h5>
                     </div>
-                    <div className="e62" id="62">
-                        <h5>62</h5>
+                    <div className={"b4 "+ (this.state.visiblelist[52] ? 'isburial' : 'isnotburial')} id="53" onClick={this.clikgrave}>
+                        <h5>4</h5>
                     </div>
-                        
+                    <div className={"b5 "+ (this.state.visiblelist[53] ? 'isburial' : 'isnotburial')} id="54" onClick={this.clikgrave}>
+                        <h5>5</h5>
+                    </div>
+                    <div className={"b6 "+ (this.state.visiblelist[54] ? 'isburial' : 'isnotburial')} id="55" onClick={this.clikgrave}>
+                        <h5>6</h5>
+                    </div>
+                    <div className={"b7 "+ (this.state.visiblelist[55] ? 'isburial' : 'isnotburial')} id="56" onClick={this.clikgrave}>
+                        <h5>7</h5>
+                    </div>
+                    <div className={"b8 "+ (this.state.visiblelist[56] ? 'isburial' : 'isnotburial')} id="57" onClick={this.clikgrave}>
+                        <h5>8</h5>
+                    </div>
+                    <div className={"b9 "+ (this.state.visiblelist[57] ? 'isburial' : 'isnotburial')} id="58" onClick={this.clikgrave}>
+                        <h5>9</h5>
+                    </div>
+                    <div className={"b10 "+ (this.state.visiblelist[58] ? 'isburial' : 'isnotburial')} id="59" onClick={this.clikgrave}>
+                        <h5>10</h5>
+                    </div>
+                    <div className={"b11 "+ (this.state.visiblelist[59] ? 'isburial' : 'isnotburial')} id="60" onClick={this.clikgrave}>
+                        <h5>11</h5>
+                    </div>
+                    <div className={"b12 "+ (this.state.visiblelist[60] ? 'isburial' : 'isnotburial')} id="61" onClick={this.clikgrave}>
+                        <h5>12</h5>
+                    </div>
+                    <div className={"b13 "+ (this.state.visiblelist[61] ? 'isburial' : 'isnotburial')} id="62" onClick={this.clikgrave}>
+                        <h5>13</h5>
+                    </div>
                 </div>
                 <div className="F">
-                    <div className="f63" id="63">
-                        <h5>63</h5>
-                    </div> 
-                    <div className="f64" id="64">
-                        <h5>64</h5>
-                    </div> 
-                    <div className="f65" id="65">
-                        <h5>65</h5>
-                    </div> 
-                    <div className="f66" id="66">
-                        <h5>66</h5>
-                    </div> 
-                    <div className="f67" id="67">
-                        <h5>67</h5>
-                    </div> 
-                    <div className="f68" id="68">
-                        <h5>68</h5>
-                    </div> 
-                    <div className="f69" id="69">
-                        <h5>69</h5>
-                    </div> 
-                    <div className="f70" id="70">
-                        <h5>70</h5>
-                    </div> 
-                    <div className="f71" id="71">
-                        <h5>71</h5>
-                    </div> 
-                    <div className="f72" id="72">
-                        <h5>72</h5>
+                    F
+                    <div className={"b1 "+ (this.state.visiblelist[62] ? 'isburial' : 'isnotburial')} id="63" onClick={this.clikgrave}>
+                       <h5>1</h5>
                     </div>
-                    <div className="f73" id="73">
-                        <h5>73</h5>
+                    <div className={"b2 "+ (this.state.visiblelist[63] ? 'isburial' : 'isnotburial')} id="64" onClick={this.clikgrave}>
+                        <h5>2</h5>
                     </div>
-                    <div className="f74" id="74">
-                        <h5>74</h5>
+                    <div className={"b3 "+ (this.state.visiblelist[64] ? 'isburial' : 'isnotburial')} id="65" onClick={this.clikgrave}>
+                        <h5>3</h5>
                     </div>
-                    <div className="f75" id="75">
-                        <h5>75</h5>
+                    <div className={"b4 "+ (this.state.visiblelist[65] ? 'isburial' : 'isnotburial')} id="66" onClick={this.clikgrave}>
+                        <h5>4</h5>
+                    </div>
+                    <div className={"b5 "+ (this.state.visiblelist[66] ? 'isburial' : 'isnotburial')} id="67" onClick={this.clikgrave}>
+                        <h5>5</h5>
+                    </div>
+                    <div className={"b6 "+ (this.state.visiblelist[67] ? 'isburial' : 'isnotburial')} id="68" onClick={this.clikgrave}>
+                        <h5>6</h5>
+                    </div>
+                    <div className={"b7 "+ (this.state.visiblelist[68] ? 'isburial' : 'isnotburial')} id="69" onClick={this.clikgrave}>
+                        <h5>7</h5>
+                    </div>
+                    <div className={"b8 "+ (this.state.visiblelist[69] ? 'isburial' : 'isnotburial')} id="70" onClick={this.clikgrave}>
+                        <h5>8</h5>
+                    </div>
+                    <div className={"b9 "+ (this.state.visiblelist[70] ? 'isburial' : 'isnotburial')} id="71" onClick={this.clikgrave}>
+                        <h5>9</h5>
+                    </div>
+                    <div className={"b10 "+ (this.state.visiblelist[71] ? 'isburial' : 'isnotburial')} id="72" onClick={this.clikgrave}>
+                        <h5>10</h5>
+                    </div>
+                    <div className={"b11 "+ (this.state.visiblelist[72] ? 'isburial' : 'isnotburial')} id="73" onClick={this.clikgrave}>
+                        <h5>11</h5>
+                    </div>
+                    <div className={"b12 "+ (this.state.visiblelist[73] ? 'isburial' : 'isnotburial')} id="74" onClick={this.clikgrave}>
+                        <h5>12</h5>
+                    </div>
+                    <div className={"b13 "+ (this.state.visiblelist[74] ? 'isburial' : 'isnotburial')} id="75" onClick={this.clikgrave}>
+                        <h5>13</h5>
                     </div>
                         
                 </div>
                 <div className="G">
-                    <div className="g76" id="76">
-                        <h5>76</h5>
-                    </div> 
-                    <div className="g77" id="77">
-                        <h5>77</h5>
-                    </div> 
-                    <div className="g78" id="78">
-                        <h5>78</h5>
-                    </div> 
-                    <div className="g79" id="79">
-                        <h5>79</h5>
-                    </div> 
-                    <div className="g80" id="80">
-                        <h5>80</h5>
-                    </div> 
-                    <div className="g81" id="81">
-                        <h5>81</h5>
-                    </div> 
-                    <div className="g82" id="82">
-                        <h5>82</h5>
-                    </div> 
-                    <div className="g83" id="83">
-                        <h5>83</h5>
-                    </div> 
-                    <div className="g84" id="84">
-                        <h5>84</h5>
-                    </div> 
-                    <div className="g85" id="85">
-                        <h5>85</h5>
+                    G
+                    <div className={"b1 "+ (this.state.visiblelist[75] ? 'isburial' : 'isnotburial')} id="76" onClick={this.clikgrave}>
+                       <h5>1</h5>
                     </div>
-                    <div className="g86" id="86">
-                        <h5>86</h5>
+                    <div className={"b2 "+ (this.state.visiblelist[76] ? 'isburial' : 'isnotburial')} id="77" onClick={this.clikgrave}>
+                        <h5>2</h5>
                     </div>
-                    <div className="g87" id="87">
-                        <h5>87</h5>
+                    <div className={"b3 "+ (this.state.visiblelist[77] ? 'isburial' : 'isnotburial')} id="78" onClick={this.clikgrave}>
+                        <h5>3</h5>
                     </div>
-                    <div className="g88" id="88">
-                        <h5>88</h5>
+                    <div className={"b4 "+ (this.state.visiblelist[78] ? 'isburial' : 'isnotburial')} id="79" onClick={this.clikgrave}>
+                        <h5>4</h5>
+                    </div>
+                    <div className={"b5 "+ (this.state.visiblelist[79] ? 'isburial' : 'isnotburial')} id="80" onClick={this.clikgrave}>
+                        <h5>5</h5>
+                    </div>
+                    <div className={"b6 "+ (this.state.visiblelist[80] ? 'isburial' : 'isnotburial')} id="81" onClick={this.clikgrave}>
+                        <h5>6</h5>
+                    </div>
+                    <div className={"b7 "+ (this.state.visiblelist[81] ? 'isburial' : 'isnotburial')} id="82" onClick={this.clikgrave}>
+                        <h5>7</h5>
+                    </div>
+                    <div className={"b8 "+ (this.state.visiblelist[82] ? 'isburial' : 'isnotburial')} id="83" onClick={this.clikgrave}>
+                        <h5>8</h5>
+                    </div>
+                    <div className={"b9 "+ (this.state.visiblelist[83] ? 'isburial' : 'isnotburial')} id="84" onClick={this.clikgrave}>
+                        <h5>9</h5>
+                    </div>
+                    <div className={"b10 "+ (this.state.visiblelist[84] ? 'isburial' : 'isnotburial')} id="85" onClick={this.clikgrave}>
+                        <h5>10</h5>
+                    </div>
+                    <div className={"b11 "+ (this.state.visiblelist[85] ? 'isburial' : 'isnotburial')} id="86" onClick={this.clikgrave}>
+                        <h5>11</h5>
+                    </div>
+                    <div className={"b12 "+ (this.state.visiblelist[86] ? 'isburial' : 'isnotburial')} id="87" onClick={this.clikgrave}>
+                        <h5>12</h5>
+                    </div>
+                    <div className={"b13 "+ (this.state.visiblelist[87] ? 'isburial' : 'isnotburial')} id="88" onClick={this.clikgrave}>
+                        <h5>13</h5>
                     </div>
                         
                 </div>
                 <div className="H">
-                    <div className="h89" id="89">
-                        <h5>89</h5>
+                    H
+                    <div className={"c1 "+ (this.state.visiblelist[88] ? 'isburial' : 'isnotburial')} id="89" onClick={this.clikgrave}>
+                       <h5>1</h5>
                     </div>
-                    <div className="h90" id="90">
-                        <h5>90</h5>
+                    <div className={"c2 "+ (this.state.visiblelist[89] ? 'isburial' : 'isnotburial')} id="90" onClick={this.clikgrave}>
+                        <h5>2</h5>
                     </div>
-                    <div className="h91" id="91">
-                        <h5>91</h5>
+                    <div className={"c3 "+ (this.state.visiblelist[90] ? 'isburial' : 'isnotburial')} id="91" onClick={this.clikgrave}>
+                        <h5>3</h5>
                     </div>
-                    <div className="h92" id="92">
-                        <h5>92</h5>
+                    <div className={"c4 "+ (this.state.visiblelist[91] ? 'isburial' : 'isnotburial')} id="92" onClick={this.clikgrave}>
+                        <h5>4</h5>
                     </div>
-                    <div className="h93" id="93">
-                        <h5>93</h5>
+                    <div className={"c5 "+ (this.state.visiblelist[92] ? 'isburial' : 'isnotburial')} id="93" onClick={this.clikgrave}>
+                        <h5>5</h5>
                     </div>
-                    <div className="h94" id="94">
-                        <h5>94</h5>
+                    <div className={"c6 "+ (this.state.visiblelist[93] ? 'isburial' : 'isnotburial')} id="94" onClick={this.clikgrave}>
+                        <h5>6</h5>
                     </div>
-                    <div className="h95" id="95">
-                        <h5>95</h5>
+                    <div className={"c7 "+ (this.state.visiblelist[94] ? 'isburial' : 'isnotburial')} id="95" onClick={this.clikgrave}>
+                        <h5>7</h5>
                     </div>
-                    <div className="h96" id="96">
-                        <h5>96</h5>
+                    <div className={"c8 "+ (this.state.visiblelist[95] ? 'isburial' : 'isnotburial')} id="96" onClick={this.clikgrave}>
+                        <h5>8</h5>
                     </div>
-                    <div className="h97" id="97">
-                        <h5>97</h5>
+                    <div className={"c9 "+ (this.state.visiblelist[96] ? 'isburial' : 'isnotburial')} id="97" onClick={this.clikgrave}>
+                        <h5>9</h5>
                     </div>
-                    <div className="h98" id="98">
-                        <h5>98</h5>
-                    </div>   
-                    <div className="h99" id="99">
-                        <h5>99</h5>
+                    <div className={"c10 "+ (this.state.visiblelist[97] ? 'isburial' : 'isnotburial')} id="98" onClick={this.clikgrave}>
+                        <h5>10</h5>
                     </div>
-                    <div className="h100" id="100">
-                        <h5>100</h5>
+                    <div className={"c11 "+ (this.state.visiblelist[98] ? 'isburial' : 'isnotburial')} id="99" onClick={this.clikgrave}>
+                        <h5>11</h5>
                     </div>
-                    <div className="h101" id="101">
-                        <h5>101</h5>
+                    <div className={"c12 "+ (this.state.visiblelist[99] ? 'isburial' : 'isnotburial')} id="100" onClick={this.clikgrave}>
+                        <h5>12</h5>
                     </div>
-                    <div className="h102" id="102">
-                        <h5>102</h5>
+                    <div className={"c13 "+ (this.state.visiblelist[100] ? 'isburial' : 'isnotburial')} id="101" onClick={this.clikgrave}>
+                        <h5>13</h5>
+                    </div> 
+                    <div className={"c14 "+ (this.state.visiblelist[101] ? 'isburial' : 'isnotburial')} id="102" onClick={this.clikgrave}>
+                        <h5>14</h5>
                     </div>
-                    <div className="h103" id="103">
-                        <h5>102</h5>
-                    </div>                              
+                    <div className={"c15 "+ (this.state.visiblelist[102] ? 'isburial' : 'isnotburial')} id="103" onClick={this.clikgrave}>
+                        <h5>15</h5>
+                    </div>      
                 </div>
                 <div className="I">
-                    <div className="i104" id="104">
-                        <h5>104</h5>
+                    I
+                    <div className={"c1 "+ (this.state.visiblelist[103] ? 'isburial' : 'isnotburial')} id="104" onClick={this.clikgrave}>
+                       <h5>1</h5>
                     </div>
-                    <div className="i105" id="105">
-                        <h5>105</h5>
+                    <div className={"c2 "+ (this.state.visiblelist[104] ? 'isburial' : 'isnotburial')} id="105" onClick={this.clikgrave}>
+                        <h5>2</h5>
                     </div>
-                    <div className="i106" id="106">
-                        <h5>106</h5>
+                    <div className={"c3 "+ (this.state.visiblelist[105] ? 'isburial' : 'isnotburial')} id="106" onClick={this.clikgrave}>
+                        <h5>3</h5>
                     </div>
-                    <div className="i107" id="107">
-                        <h5>107</h5>
+                    <div className={"c4 "+ (this.state.visiblelist[106] ? 'isburial' : 'isnotburial')} id="107" onClick={this.clikgrave}>
+                        <h5>4</h5>
                     </div>
-                    <div className="i108" id="108">
-                        <h5>108</h5>
+                    <div className={"c5 "+ (this.state.visiblelist[107] ? 'isburial' : 'isnotburial')} id="108" onClick={this.clikgrave}>
+                        <h5>5</h5>
                     </div>
-                    <div className="i109" id="109">
-                        <h5>109</h5>
+                    <div className={"c6 "+ (this.state.visiblelist[108] ? 'isburial' : 'isnotburial')} id="109" onClick={this.clikgrave}>
+                        <h5>6</h5>
                     </div>
-                    <div className="i110" id="110">
-                        <h5>110</h5>
+                    <div className={"c7 "+ (this.state.visiblelist[109] ? 'isburial' : 'isnotburial')} id="110" onClick={this.clikgrave}>
+                        <h5>7</h5>
                     </div>
-                    <div className="i111" id="111">
-                        <h5>111</h5>
+                    <div className={"c8 "+ (this.state.visiblelist[110] ? 'isburial' : 'isnotburial')} id="111" onClick={this.clikgrave}>
+                        <h5>8</h5>
                     </div>
-                    <div className="i112" id="112">
-                        <h5>112</h5>
+                    <div className={"c9 "+ (this.state.visiblelist[111] ? 'isburial' : 'isnotburial')} id="112" onClick={this.clikgrave}>
+                        <h5>9</h5>
                     </div>
-                    <div className="i113" id="113">
-                        <h5>113</h5>
+                    <div className={"c10 "+ (this.state.visiblelist[112] ? 'isburial' : 'isnotburial')} id="113" onClick={this.clikgrave}>
+                        <h5>10</h5>
+                    </div>
+                    <div className={"c11 "+ (this.state.visiblelist[113] ? 'isburial' : 'isnotburial')} id="114" onClick={this.clikgrave}>
+                        <h5>11</h5>
+                    </div>
+                    <div className={"c12 "+ (this.state.visiblelist[114] ? 'isburial' : 'isnotburial')} id="115" onClick={this.clikgrave}>
+                        <h5>12</h5>
+                    </div>
+                    <div className={"c13 "+ (this.state.visiblelist[115] ? 'isburial' : 'isnotburial')} id="116" onClick={this.clikgrave}>
+                        <h5>13</h5>
+                    </div> 
+                    <div className={"c14 "+ (this.state.visiblelist[116] ? 'isburial' : 'isnotburial')} id="117" onClick={this.clikgrave}>
+                        <h5>14</h5>
+                    </div>
+                    <div className={"c15 "+ (this.state.visiblelist[117] ? 'isburial' : 'isnotburial')} id="118" onClick={this.clikgrave}>
+                        <h5>15</h5>
                     </div>   
-                    <div className="i114" id="114">
-                        <h5>114</h5>
-                    </div>
-                    <div className="i115" id="115">
-                        <h5>115</h5>
-                    </div>
-                    <div className="i116" id="116">
-                        <h5>116</h5>
-                    </div>
-                    <div className="i117" id="117">
-                        <h5>117</h5>
-                    </div>
-                    <div className="i118" id="118">
-                        <h5>118</h5>
-                    </div>   
-                        
                 </div>
                 <div className="J">
-                        
+                    <div className={"d1 "+ (this.state.visiblelist[118] ? 'isburial' : 'isnotburial')} id="119" onClick={this.clikgrave}>
+                       <h5>1</h5>
+                    </div>
+                    <div className={"d2 "+ (this.state.visiblelist[119] ? 'isburial' : 'isnotburial')} id="120" onClick={this.clikgrave}>
+                        <h5>2</h5>
+                    </div>
+                    <div className={"d3 "+ (this.state.visiblelist[120] ? 'isburial' : 'isnotburial')} id="121" onClick={this.clikgrave}>
+                        <h5>3</h5>
+                    </div>
+                    <div className={"d4 "+ (this.state.visiblelist[121] ? 'isburial' : 'isnotburial')} id="122" onClick={this.clikgrave}>
+                        <h5>4</h5>
+                    </div>
+                    <div className={"d5 "+ (this.state.visiblelist[122] ? 'isburial' : 'isnotburial')} id="123" onClick={this.clikgrave}>
+                        <h5>5</h5>
+                    </div>
+                    <div className={"d6 "+ (this.state.visiblelist[123] ? 'isburial' : 'isnotburial')} id="124" onClick={this.clikgrave}>
+                        <h5>6</h5>
+                    </div>
+                    <div className={"d7 "+ (this.state.visiblelist[124] ? 'isburial' : 'isnotburial')} id="125" onClick={this.clikgrave}>
+                        <h5>7</h5>
+                    </div>
+                    <div className={"d8 "+ (this.state.visiblelist[125] ? 'isburial' : 'isnotburial')} id="126" onClick={this.clikgrave}>
+                        <h5>8</h5>
+                    </div>
+                    <div className={"d9 "+ (this.state.visiblelist[126] ? 'isburial' : 'isnotburial')} id="127" onClick={this.clikgrave}>
+                        <h5>9</h5>
+                    </div>
+                    <div className={"d10 "+ (this.state.visiblelist[127] ? 'isburial' : 'isnotburial')} id="128" onClick={this.clikgrave}>
+                        <h5>10</h5>
+                    </div>
+                    <div className={"d11 "+ (this.state.visiblelist[128] ? 'isburial' : 'isnotburial')} id="129" onClick={this.clikgrave}>
+                        <h5>11</h5>
+                    </div>
+                    <div className={"d12 "+ (this.state.visiblelist[129] ? 'isburial' : 'isnotburial')} id="115" onClick={this.clikgrave}>
+                        <h5>12</h5>
+                    </div>
+                </div>
+                                  
+                <div className="J2">
+                    <div className={"e1 "+ (this.state.visiblelist[130] ? 'isburial' : 'isnotburial')} id="131" onClick={this.clikgrave}>
+                       <h5>1</h5>
+                    </div>
+                    <div className={"e2 "+ (this.state.visiblelist[131] ? 'isburial' : 'isnotburial')} id="132" onClick={this.clikgrave}>
+                        <h5>2</h5>
+                    </div>
+                    <div className={"e3 "+ (this.state.visiblelist[132] ? 'isburial' : 'isnotburial')} id="133" onClick={this.clikgrave}>
+                        <h5>3</h5>
+                    </div>
+                    <div className={"e4 "+ (this.state.visiblelist[133] ? 'isburial' : 'isnotburial')} id="134" onClick={this.clikgrave}>
+                        <h5>4</h5>
+                    </div>
+                    <div className={"e5 "+ (this.state.visiblelist[134] ? 'isburial' : 'isnotburial')} id="135" onClick={this.clikgrave}>
+                        <h5>5</h5>
+                    </div>
+                    <div className={"e6 "+ (this.state.visiblelist[135] ? 'isburial' : 'isnotburial')} id="136" onClick={this.clikgrave}>
+                        <h5>6</h5>
+                    </div>
+                    <div className={"e7 "+ (this.state.visiblelist[136] ? 'isburial' : 'isnotburial')} id="137" onClick={this.clikgrave}>
+                        <h5>7</h5>
+                    </div>
+                    <div className={"e8 "+ (this.state.visiblelist[137] ? 'isburial' : 'isnotburial')} id="138" onClick={this.clikgrave}>
+                        <h5>8</h5>
+                    </div>
+                    <div className={"e9 "+ (this.state.visiblelist[138] ? 'isburial' : 'isnotburial')} id="139" onClick={this.clikgrave}>
+                        <h5>9</h5>
+                    </div>
+                    <div className={"e10 "+ (this.state.visiblelist[139] ? 'isburial' : 'isnotburial')} id="140" onClick={this.clikgrave}>
+                        <h5>10</h5>
+                    </div>
+                    <div className={"e11 "+ (this.state.visiblelist[140] ? 'isburial' : 'isnotburial')} id="141" onClick={this.clikgrave}>
+                        <h5>11</h5>
+                    </div>
+                    <div className={"e12 "+ (this.state.visiblelist[141] ? 'isburial' : 'isnotburial')} id="142" onClick={this.clikgrave}>
+                        <h5>12</h5>
+                    </div>
+                
+
+                </div>
+                <div className="J3">
+                    <div className={"e1 "+ (this.state.visiblelist[142] ? 'isburial' : 'isnotburial')} id="143" onClick={this.clikgrave}>
+                       <h5>1</h5>
+                    </div>
+                    <div className={"e2 "+ (this.state.visiblelist[143] ? 'isburial' : 'isnotburial')} id="144" onClick={this.clikgrave}>
+                        <h5>2</h5>
+                    </div>
+                    <div className={"e3 "+ (this.state.visiblelist[144] ? 'isburial' : 'isnotburial')} id="145" onClick={this.clikgrave}>
+                        <h5>3</h5>
+                    </div>
+                    <div className={"e4 "+ (this.state.visiblelist[145] ? 'isburial' : 'isnotburial')} id="146" onClick={this.clikgrave}>
+                        <h5>4</h5>
+                    </div>
+                    <div className={"e5 "+ (this.state.visiblelist[146] ? 'isburial' : 'isnotburial')} id="147" onClick={this.clikgrave}>
+                        <h5>5</h5>
+                    </div>
+                    <div className={"e6 "+ (this.state.visiblelist[147] ? 'isburial' : 'isnotburial')} id="148" onClick={this.clikgrave}>
+                        <h5>6</h5>
+                    </div>
+                    <div className={"e7 "+ (this.state.visiblelist[148] ? 'isburial' : 'isnotburial')} id="149" onClick={this.clikgrave}>
+                        <h5>7</h5>
+                    </div>
+                    <div className={"e8 "+ (this.state.visiblelist[149] ? 'isburial' : 'isnotburial')} id="150" onClick={this.clikgrave}>
+                        <h5>8</h5>
+                    </div>
+                    <div className={"e9 "+ (this.state.visiblelist[150] ? 'isburial' : 'isnotburial')} id="151" onClick={this.clikgrave}>
+                        <h5>9</h5>
+                    </div>
+                    <div className={"e10 "+ (this.state.visiblelist[151] ? 'isburial' : 'isnotburial')} id="152" onClick={this.clikgrave}>
+                        <h5>10</h5>
+                    </div>
+                    <div className={"e11 "+ (this.state.visiblelist[152] ? 'isburial' : 'isnotburial')} id="153" onClick={this.clikgrave}>
+                        <h5>11</h5>
+                    </div>
+                    <div className={"e12 "+ (this.state.visiblelist[153] ? 'isburial' : 'isnotburial')} id="154" onClick={this.clikgrave}>
+                        <h5>12</h5>
+                    </div>
+                
+
+                </div>
+                <div className="J4">
+                    <div className={"d1 "+ (this.state.visiblelist[154] ? 'isburial' : 'isnotburial')} id="155" onClick={this.clikgrave}>
+                       <h5>1</h5>
+                    </div>
+                    <div className={"d2 "+ (this.state.visiblelist[155] ? 'isburial' : 'isnotburial')} id="156" onClick={this.clikgrave}>
+                        <h5>2</h5>
+                    </div>
+                    <div className={"d3 "+ (this.state.visiblelist[156] ? 'isburial' : 'isnotburial')} id="157" onClick={this.clikgrave}>
+                        <h5>3</h5>
+                    </div>
+                    <div className={"d4 "+ (this.state.visiblelist[157] ? 'isburial' : 'isnotburial')} id="158" onClick={this.clikgrave}>
+                        <h5>4</h5>
+                    </div>
+                    <div className={"d5 "+ (this.state.visiblelist[158] ? 'isburial' : 'isnotburial')} id="159" onClick={this.clikgrave}>
+                        <h5>5</h5>
+                    </div>
+                    <div className={"d6 "+ (this.state.visiblelist[159] ? 'isburial' : 'isnotburial')} id="160" onClick={this.clikgrave}>
+                        <h5>6</h5>
+                    </div>
+                    <div className={"d7 "+ (this.state.visiblelist[160] ? 'isburial' : 'isnotburial')} id="161" onClick={this.clikgrave}>
+                        <h5>7</h5>
+                    </div>
+                    <div className={"d8 "+ (this.state.visiblelist[161] ? 'isburial' : 'isnotburial')} id="162" onClick={this.clikgrave}>
+                        <h5>8</h5>
+                    </div>
+                    <div className={"d9 "+ (this.state.visiblelist[162] ? 'isburial' : 'isnotburial')} id="163" onClick={this.clikgrave}>
+                        <h5>9</h5>
+                    </div>
+                    <div className={"d10 "+ (this.state.visiblelist[163] ? 'isburial' : 'isnotburial')} id="164" onClick={this.clikgrave}>
+                        <h5>10</h5>
+                    </div>
+                    <div className={"d11 "+ (this.state.visiblelist[164] ? 'isburial' : 'isnotburial')} id="165" onClick={this.clikgrave}>
+                        <h5>11</h5>
+                    </div>
+                    <div className={"d12 "+ (this.state.visiblelist[165] ? 'isburial' : 'isnotburial')} id="166" onClick={this.clikgrave}>
+                        <h5>12</h5>
+                    </div>
+
                 </div>
                 <div className="K">
+                    <div className={"k1 "+ (this.state.visiblelist[166] ? 'isburial' : 'isnotburial')} id="167" onClick={this.clikgrave}>
+                       <h5>1</h5>
+                    </div>
+                    <div className={"k2 "+ (this.state.visiblelist[167] ? 'isburial' : 'isnotburial')} id="168" onClick={this.clikgrave}>
+                        <h5>2</h5>
+                    </div>
+                    <div className={"k3 "+ (this.state.visiblelist[168] ? 'isburial' : 'isnotburial')} id="169" onClick={this.clikgrave}>
+                        <h5>3</h5>
+                    </div>
+                    <div className={"k4 "+ (this.state.visiblelist[169] ? 'isburial' : 'isnotburial')} id="170" onClick={this.clikgrave}>
+                        <h5>4</h5>
+                    </div>
+                    <div className={"k5 "+ (this.state.visiblelist[170] ? 'isburial' : 'isnotburial')} id="171" onClick={this.clikgrave}>
+                        <h5>5</h5>
+                    </div>
+                    <div className={"k6 "+ (this.state.visiblelist[171] ? 'isburial' : 'isnotburial')} id="172" onClick={this.clikgrave}>
+                        <h5>6</h5>
+                    </div>
+                    <div className={"k7 "+ (this.state.visiblelist[172] ? 'isburial' : 'isnotburial')} id="173" onClick={this.clikgrave}>
+                        <h5>7</h5>
+                    </div>
+                    <div className={"k8 "+ (this.state.visiblelist[173] ? 'isburial' : 'isnotburial')} id="174" onClick={this.clikgrave}>
+                        <h5>8</h5>
+                    </div>
+                    <div className={"k9 "+ (this.state.visiblelist[174] ? 'isburial' : 'isnotburial')} id="175" onClick={this.clikgrave}>
+                        <h5>9</h5>
+                    </div>
+                    <div className={"k10 "+ (this.state.visiblelist[175] ? 'isburial' : 'isnotburial')} id="176" onClick={this.clikgrave}>
+                        <h5>10</h5>
+                    </div>
                         
                 </div>
                 <div className="L">
+                     <div className={"k1 "+ (this.state.visiblelist[176] ? 'isburial' : 'isnotburial')} id="177" onClick={this.clikgrave}>
+                       <h5>1</h5>
+                    </div>
+                    <div className={"k2 "+ (this.state.visiblelist[177] ? 'isburial' : 'isnotburial')} id="178" onClick={this.clikgrave}>
+                        <h5>2</h5>
+                    </div>
+                    <div className={"k3 "+ (this.state.visiblelist[178] ? 'isburial' : 'isnotburial')} id="179" onClick={this.clikgrave}>
+                        <h5>3</h5>
+                    </div>
+                    <div className={"k4 "+ (this.state.visiblelist[179] ? 'isburial' : 'isnotburial')} id="180" onClick={this.clikgrave}>
+                        <h5>4</h5>
+                    </div>
+                    <div className={"k5 "+ (this.state.visiblelist[180] ? 'isburial' : 'isnotburial')} id="181" onClick={this.clikgrave}>
+                        <h5>5</h5>
+                    </div>
+                    <div className={"k6 "+ (this.state.visiblelist[181] ? 'isburial' : 'isnotburial')} id="182" onClick={this.clikgrave}>
+                        <h5>6</h5>
+                    </div>
+                    <div className={"k7 "+ (this.state.visiblelist[182] ? 'isburial' : 'isnotburial')} id="183" onClick={this.clikgrave}>
+                        <h5>7</h5>
+                    </div>
+                    <div className={"k8 "+ (this.state.visiblelist[183] ? 'isburial' : 'isnotburial')} id="184" onClick={this.clikgrave}>
+                        <h5>8</h5>
+                    </div>
+                    <div className={"k9 "+ (this.state.visiblelist[184] ? 'isburial' : 'isnotburial')} id="185" onClick={this.clikgrave}>
+                        <h5>9</h5>
+                    </div>
+                    <div className={"k10 "+ (this.state.visiblelist[185] ? 'isburial' : 'isnotburial')} id="186" onClick={this.clikgrave}>
+                        <h5>10</h5>
+                    </div>
                         
                 </div>
 
+                </div>
                 </div>
                 
                 <div className="Boczek">
                 <div className="Find">
                     <div className="RipFinder">
-                        <label>Wyszukaj</label>
+                        <label id="leb">Wyszukaj</label>
                         <input className="RipFinder"/>
                     </div>
                 </div>
                 <div className="Info">
-                   Umarł i nie zyje
+                {/*<div className="rip">{ripdetail}</div>*/}
+                Hubert to baran
 
                 </div>
                 
                 </div>
         </div>
               
-    </div>
+   
     )
     }
 }
