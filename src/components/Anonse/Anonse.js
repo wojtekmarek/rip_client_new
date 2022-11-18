@@ -52,6 +52,8 @@ class Anonse extends Component{
             );
             });
         }else{}
+
+        
  
         return(
             <div>

@@ -1,0 +1,80 @@
+.orderkontent{
+    display:flex;
+    flex-direction: row;
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 15px;
+    margin-top: 40px;
+    box-sizing: border-box;
+	box-shadow: 11px 13px 7px 0px #78797a;
+	background:linear-gradient(to bottom, #fffcfc 5%, #d4d4d4 100%);
+	background-color:#fffcfc;
+	border-radius:10px;
+	border:1px solid #adadad;
+	color:#282e30;
+	font-family:Arial;
+	font-size:17px;
+	padding:32px 76px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #e1e2ed;
+	justify-content:center;
+}
+
+.userdata{
+    display:flex;
+    flex-direction: row;
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 15px;
+    margin-top: 40px;
+    box-sizing: border-box;
+	box-shadow: 11px 13px 7px 0px #78797a;
+	background:linear-gradient(to bottom, #fffcfc 5%, #d4d4d4 100%);
+	background-color:#fffcfc;
+	border-radius:10px;
+	border:1px solid #adadad;
+	color:#282e30;
+	font-family:Arial;
+	font-size:17px;
+	padding:32px 76px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #e1e2ed;
+}
+
+.userdatacolumn{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.inputdata{
+    width: 350px;
+}
+
+.wyborUslugi{
+	border-radius:10px;
+	border:1px solid #adadad;
+	padding:32px 76px;
+	box-sizing: border-box;
+	box-shadow: 11px 13px 7px 0px #78797a;
+}
+
+.insidebutton {
+	box-shadow: 6px 2px 0px 0px #756a69;
+	background:linear-gradient(to bottom, #636363 5%, #b3b1b1 100%);
+	background-color:#d1c9d1;
+	border-radius:10px;
+	border:1px solid #e6d5d4;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	
+	font-size:17px;
+	font-weight:bold;
+	padding:11px 76px;
+	text-decoration:none;
+	text-shadow:4px 5px 3px #241413;
+}
+
+.insidebutton:hover{
+	background:linear-gradient(to bottom, #f3f3f3 5%, #928282 100%);
+}

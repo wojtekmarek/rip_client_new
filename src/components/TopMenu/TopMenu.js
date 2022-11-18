@@ -61,32 +61,14 @@ class TopMenu extends Component {
                     </Link>
                     {islogin ?
                     [
-                        <Link to="/pochowek" key={10}>
-                            <div className="topmenubutton" key={11}>
-                                Pochówek
-                            </div>
-                        </Link>,
+                        
+                    
 
-                        <Link to="/ekshumacja" key={12}>
-                            <div className="topmenubutton"  key={13}>
-                                Ekshumacja
-                            </div>
-                        </Link>,
-                        <Link to="/platnoscikwatery" key={14}>
-                            <div className="topmenubutton" key={15}>
-                                Płatności kwatery
-                            </div>
-                        </Link>,
-
-                       <><Link to="/intencja">
+                       <Link to="/intencja">
                             <div className="topmenubutton">
                                 Intencja mszy
                             </div>
-                        </Link><Link to="/kwatery">
-                                <div className="topmenubutton">
-                                    Kwatery
-                                </div>
-                            </Link></>
+                        </Link>
 
                         ]
                     : []}

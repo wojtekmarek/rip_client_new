@@ -24,9 +24,28 @@ class Contact extends Component{
             <div>
                 <TopMenu/>
                 <div className="kontent">
-                   Skontaktuj się z nami!
+                    <b>
+                    <h1><i><center>Kontakt</center></i></h1>
+                   Adres:
 <br></br>
-                   Nr. tel. 666 666 666
+                   05-300 Mińsk Mazowiecki
+                   <br></br>
+                   ul. Kościelna 30a
+                   <br></br>
+                   <br></br>
+                   tel:
+                   <br></br>
+                   738 329 955
+                   <br></br>
+                   738 293 221
+                   <br></br>
+                   <br></br>
+                   e-mail:
+                   <br></br>
+                   uduchowiony30@wp.pl
+
+                   </b>
+                   
                 </div>
                
               

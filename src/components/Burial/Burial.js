@@ -24,19 +24,11 @@ class Burial extends Component {
         return (
             <div>
                 <TopMenu />
+                
                 <div className="kontent">
-                    <h3>Lista dostępnych pochówków</h3>
-                    <div className="columnContent">
-                    <div className="actions">
-                    <button id="lista" className="primaryButton">Dodaj nowy pochówek</button>
-                    </div>
-
-                    <div className="searcher">
-                        <input type="text"></input>
-                        <button id="lista" className="primaryButton">Wyszukaj pochówek</button>
-
-                    </div>
-                    </div>
+                   
+                
+                    
                     <Link to="/ekshumacja">
                             <div className="insidebutton" >
                                 Ekshumacja
@@ -48,6 +40,7 @@ class Burial extends Component {
                             </div>
                         </Link>
                 </div>
+                <h2><i><center>Jaką czynność chcesz wykonać?</center></i></h2>
 
                 
 

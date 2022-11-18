@@ -3,6 +3,7 @@ import React,{Component} from "react";
 import "./styles.css"
 import { string } from "prop-types";
 import { int } from "prop-types";
+import { Link } from "react-router-dom";
 
 class Intentions extends Component{
     state={
@@ -12,30 +13,28 @@ class Intentions extends Component{
     
     componentDidMount= () =>{
       
-        
-           
-        
+       
     }
     
 
  
     render(){
         
+       
+
         const{intentionname,intentionprice}=this.state;
        
         return(
+
+
+            
             <div>
                 <TopMenu/>
-                
-                <div className="kontent">
-       
-<br></br>
-
+                <div className="intentionskontent">
+               
                <h1>Zamów mszę</h1>
 
-
-
-               <div className="wyborUslugi">
+               <div className="wyborUslugiintenions">
                 <form id="formularzintencji">
                    Intencja<br></br>
               <input type="text" maxlength="50" pattern="[A-Za-z]"></input>
@@ -65,13 +64,12 @@ class Intentions extends Component{
               <br></br>
               </form>
               </div>
-
+       
               <br></br>
               <button className="insidebutton">Zamów</button>
-
-            
+              
            </div>
-
+           
        </div>
         )
     }
