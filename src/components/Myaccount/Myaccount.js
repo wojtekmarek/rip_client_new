@@ -87,6 +87,21 @@ class Myaccount extends Component{
                                     ovnerrippesel:ovner.Pesel});
                     
                      })
+                     console.log("listgrave"+email)
+                axios.get(backendadress+'/ovnerrip/getdataovnerripburial',{params:{email:email}} )
+                    .then(res => {
+                      console.log(res.data);
+                      console.log(res.data[0]);
+                        let burial=res.data[0];
+                    this.setState({ ovnerriplastname:burial.LastName,
+                                    ovnerripname:burial.Name,
+                                    ovnerripadress:burial.Street,
+                                    ovnerriphousenr:burial.HomeNumber,
+                                    ovnerripapartmentnr:burial.HometwoNumber,
+                                    ovnerripcity:burial.city,
+                                    ovnerrippesel:burial.Pesel});
+                    
+                     })
                     }      
         })
         
@@ -99,13 +114,13 @@ class Myaccount extends Component{
     render(){
         
     const{useremail,userpassword,ovnerripadress,ovnerripapartmentnr,ovnerripcity,ovnerriphousenr,ovnerriplastname
-    ,ovnerripname,ovnerrippesel,userstatus,listburial,burialdata}=this.state;
+    ,ovnerripname,ovnerrippesel,userstatus,listgrave,gravedata}=this.state;
        
         
         
         
         const list = []
-        console.log(listburial);
+        console.log(listgrave);
         
     // console.log(listburial);
 
@@ -118,21 +133,42 @@ class Myaccount extends Component{
     // console.log(listexumation);
 
 
-        if(listburial[0]!==undefined){
-            listburial.forEach((burial) => {
-                console.log(burial);
+        if(listgrave[0]!==undefined){
+            listgrave.forEach((gravequarters) => {
+                console.log(gravequarters);
                 console.log("aaa");
-                let burialdata=burial.time_event.toString().slice(0,10).split("-").reverse().join("-");
-                console.log(burialdata);
-                list.push(<div className="listburial">
+                let gravedata=gravequarters.time_event.toString().slice(0,10).split("-").reverse().join("-");
+                console.log(gravedata);
+                list.push(<div className="listgrave">
                     <div className="anonsetitle">
-                        {burial.title}
+                        {gravequarters.IdGraveQuaters}
                     </div>
                     <div className="anonsedate">
-                        {burialdata}
+                        {gravequarters.DatePayment}
                     </div>
                     <div className="anonsscribe">
-                        {burial.annonse}
+                        {gravequarters.Payment}
+                    </div>
+                    <div className="anonsscribe">
+                        {gravequarters.ovnerripid}
+                    </div>
+                    <div className="anonsscribe">
+                        {gravequarters.NumberenableTraditionalBurials}
+                    </div>
+                    <div className="anonsscribe">
+                        {gravequarters.NumberenableUrnBurials}
+                    </div>
+                    <div className="anonsscribe">
+                        {gravequarters.NumberTraditionalBurials}
+                    </div>
+                    <div className="anonsscribe">
+                        {gravequarters.NumberUrnBurials}
+                    </div>
+                    <div className="anonsscribe">
+                        {gravequarters.MethodOfPayment}
+                    </div>
+                    <div className="anonsscribe">
+                        {gravequarters.TypeOF}
                     </div>
                 </div>
             );
@@ -220,14 +256,21 @@ else{}
                         <input className="inputdata" value={ovnerripapartmentnr}/>,
                         <label>Miasto</label>,
                         <input className="inputdata" value={ovnerripcity}/>,
+                        
                         ]:[""]}
 
                     </div>
-
+                    
+                
+                   
+                   
 
                     
                 </div>
-                {(listburial[0]!==undefined) ? [<div className="listburial">{list}</div>]:[]}
+                <div className="userdatacolumn">
+                    {(listgrave[0]!==undefined) ? [<div className="listgrave">{list}</div>]:[]}
+
+                    </div>
                 
                 {/* {(listexumation[0]!==undefined) ? [<div className="listexumation">{list}</div>]:[]}
                 {(listgrave[0]!==undefined) ? [<div className="listgrave">{list}</div>]:[]}
