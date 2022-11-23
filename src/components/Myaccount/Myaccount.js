@@ -5,7 +5,7 @@ import store from"../../reduser/store";
 import axios from 'axios';
 import { string } from "prop-types";
 import serverurl from "../../reduser/store"
-const backendadress=store.backendadress;
+const backendadress="sa";
 
 
 class Myaccount extends Component{

@@ -1,17 +1,21 @@
 import React,{Component} from "react";
-import store from"../../reduser/store";
 import TopMenu from "../TopMenu/TopMenu";
 import"./Anonse.css"
-import serverurl from "../../reduser/store"
+
 
 class Anonse extends Component{
-    state={
-        anonselist: JSON,
-    }
-    
+    constructor(props) {
+        super(props)
+        this.state={
+            
+            anonselist: JSON,
+        }
+}
     componentDidMount= () =>{
-        //console.log(serverurl.backendadress);
-        fetch(serverurl.backendadress+'/anonse/listanonse')
+        //console.log("fetch");
+        //console.log(this.props.store.backendadress);
+       
+        fetch(this.props.store.backendadress+'/anonse/listanonse')
         .then(response => response.json())
         .then(json =>{
              this.setState({anonselist: json})
@@ -38,7 +42,8 @@ class Anonse extends Component{
                     }
                 
                 console.log(anonsedata);
-                list.push(<div className="anonse">
+                list.push(
+                <div className="anonse">
                     <div className="anonsetitle">
                         {anons.title}
                     </div>

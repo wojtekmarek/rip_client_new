@@ -1,5 +1,6 @@
 
-import { Route, Routes, Navigate } from "react-router-dom"
+import React from 'react'
+import { Router, Route, Navigate  } from 'react-router'
 import Main from "./components/Main/Main"
 import Signup from "./components/Singnup/Singnup"
 import Login from "./components/Login/Login"
@@ -13,28 +14,38 @@ import Kontakt from "./components/Contact/Contact"
 import Intentions from "./components/Intentions/Intentions"
 import GraveQuarters from "./components/GraveQuarters/GraveQuarters"
 import Order from "./components/Order/Order"
+import Payment from "./components/Payment/Payment"
 
 
-function App() {
-const user = localStorage.getItem("token")
-const id=localStorage.getItem("id")
-return (
-<Routes>
-<Route path="/" exact element={<Main />} />
-<Route path="/signup" exact element={<Signup />} />
-<Route path="/login" exact element={<Login />} />
-<Route path="/anonse" element={<Anonse/>} />
-<Route path="/kontakt" element={<Kontakt/>} />
-<Route path="/cmentarz" element={<Graveyard/>} />
-{user && id &&<Route path="/mojekonto" exact element={<Myaccount/>} />}
-<Route path="/mojekonto" element={<Navigate replace to="/login" />} />
-{user && id &&<Route path="/pochowek" exact element={<Burial/>} />}
-{user && id &&<Route path="/order" exact element={<Order/>} />}
-{user && id &&<Route path="/ekshumacja" exact element={<Exhumation/>} />}
-{user && id &&<Route path="/intencja" exact element={<Intentions/>} />}
-{user && id &&<Route path="/kwatery" exact element={<GraveQuarters/>} />}
-{user && id &&<Route path="/platnoscikwatery" exact element={<QuarterPayments/>} />}
-</Routes>
-)
+
+export default function App() {
+    const user = localStorage.getItem("token")
+    const id = localStorage.getItem("id")
+    return (
+        
+            <Router>
+                <Route exact path="/login" element={<Login/>} />      
+                <Route exact path="/anonse" element={<Anonse />} />
+                <Route exact path="/"  element={<Main/>} />
+                <Route exact path="/signup" element={<Signup />} />
+                          
+                <Route exact path="/kontakt" element={<Kontakt />} />
+                <Route exact path="/cmentarz" element={<Graveyard />} />
+                {user && id && <Route exact path="/mojekonto" element={<Myaccount />} />}
+                <Route exact path="/mojekonto" element={<Navigate replace to="/login" />} />
+                {user && id && <Route path="/pochowek"  element={<Burial />} />}
+                {user && id && <Route path="/order"  element={<Order />} />}
+                {user && id && <Route path="/ekshumacja"  element={<Exhumation />} />}
+                {user && id && <Route path="/intencja"  element={<Intentions />} />}
+                {user && id && <Route path="/kwatery"  element={<GraveQuarters />} />}
+                {user && id && <Route path="/platnosci"  element={<Payment />} />}
+                {user && id && <Route path="/platnoscikwatery" element={<QuarterPayments />} />}
+            
+        
+
+    </Router>
+       
+        
+    );
 }
-export default App
+
