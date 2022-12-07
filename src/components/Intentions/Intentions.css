@@ -1,0 +1,121 @@
+.intecionkontent{
+    display: flex;
+    flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+}
+
+.intencionscribe {
+    width: 500px;
+    height: 200px;
+    border-radius: 6px;
+    overflow-y: scroll;
+    margin: 10px 0px 10px 0px;
+   
+}
+.intencionbutton{
+	width: 600px;
+	margin-top: 20px;
+	box-shadow: 4px 4px 0px 0px #6a6868;
+	background: linear-gradient(to bottom, #d1c9d1 5%, #4e4d4d 100%);
+	background-color: #d1c9d1;
+	border-radius: 10px;
+	border: 1px solid #e6d5d4;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-family: Arial;
+	font-size: 17px;
+	font-weight: bold;
+	padding: 11px 10px;
+	text-decoration: none;
+	text-shadow: 4px 5px 3px #241413;
+	
+}
+
+.headerformintencion {
+    font-size: 35px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #877e7e;
+}
+.intencionformfield{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 20px;
+
+}
+
+.offeringinput{
+	
+		width: 150px;
+		border-radius: 5px;
+	
+
+}
+
+.widthselect{
+	width: 400px;
+}
+.notyfication
+{
+    position: sticky;
+    top: 20px;
+    left: 0px;
+    width: 100%;
+    background: #88e988;
+    height: 49px;
+    font-size: 41px;
+    margin-top: 16px;
+    visibility: hidden;
+    text-align: center;
+    color: #7a6f6f;
+    text-shadow: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.userdatacolumnintentions{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.inputdata{
+    width: 350px;
+}
+
+.wyborUslugiintentions{
+	border-radius:10px;
+	border:1px solid #adadad;
+	padding:32px 76px;
+	box-sizing: border-box;
+	box-shadow: 11px 13px 7px 0px #78797a;
+	margin: 0 auto;
+	justify-content: center;
+	display: flex;
+}
+
+
+
+form{
+	margin: 0 auto;
+	
+	
+}
+
+h1{
+	display: flex;
+	margin: 0 auto;
+	justify-content: center;
+}

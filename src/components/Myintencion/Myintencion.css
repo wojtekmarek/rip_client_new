@@ -1,0 +1,120 @@
+.nullintecion{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+.scribenullintecion{
+    font-size: 35px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #877e7e;
+}
+.buttonorderinencion{ 
+    max-width: 300px;
+    box-shadow: 4px 4px 0px 0px #6a6868;
+    background: linear-gradient(to bottom, #d1c9d1 5%, #4e4d4d 100%);
+    background-color: #d1c9d1;
+    border-radius: 10px;
+    border: 1px solid #e6d5d4;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 11px 10px;
+    text-decoration: none;
+    text-shadow: 4px 5px 3px #241413;
+}
+
+.intencionconteiner{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #6a6868;
+    font-weight: 600;
+}
+.intecionspan{
+    font-size: 120%;
+    font-weight: 800;
+    color:#4e4d4d;
+    margin-right: 5px;
+}
+.inteciondate{
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+.inteciontime{
+    margin-bottom: 10px;
+
+}
+.intecionscribe{
+    margin-bottom: 10px;
+    max-width: 450px;
+
+}
+.intecionakcept{
+    margin-bottom: 10px;
+
+}
+.intecionpayment{
+    margin-bottom: 10px;
+
+}
+.paymentnotyficacion{
+ position: relative;
+ top:-500px;
+ width: 50%;
+ height: 400px;
+ margin-left: 25%;
+ background: #e4e3e4;
+ border: 1px solid #6a6868;
+ border-radius: 10px;
+ padding: 30px;
+ margin-bottom: -400px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+
+}
+.notyficatecode204rowdisplay {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+}
+.notyficatecode204paybuton{
+    max-width: 300px;
+    box-shadow: 4px 4px 0px 0px #6a6868;
+    background: linear-gradient(to bottom, #d1c9d1 5%, #4e4d4d 100%);
+    background-color: #d1c9d1;
+    border-radius: 10px;
+    border: 1px solid #e6d5d4;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 11px 10px;
+    text-decoration: none;
+    text-shadow: 4px 5px 3px #241413;
+}
+.notyficatecode204header{
+  
+
+    font-size: 120%;
+    font-weight: 800;
+    color:#4e4d4d;
+    margin-bottom: 30px;
+  
+}
+.notyficatecode204scribe{
+    color: #6a6868;
+    font-weight: 600;
+    margin-bottom: 30px;
+        }

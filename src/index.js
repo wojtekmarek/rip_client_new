@@ -10,13 +10,10 @@ import Login from "./components/Login/Login"
 import Anonse from "./components/Anonse/Anonse"
 import Myaccount from "./components/Myaccount/Myaccount"
 import Graveyard from "./components/Graveyard/Graveyard"
-import Burial from "./components/Burial/Burial"
-import Exhumation from "./components/Exhumation/Exhumation"
-import QuarterPayments from "./components/QuarterPayments/QuarterPayments"
 import Kontakt from "./components/Contact/Contact"
 import Intentions from "./components/Intentions/Intentions"
+import Paymentsummary from './components/Paymentsummary/Paymentsummary'
 import GraveQuarters from "./components/GraveQuarters/GraveQuarters"
-import Order from "./components/Order/Order"
 import Payment from "./components/Payment/Payment"
 import{user,id} from"./reduser/store"
 ReactDOM.render(
@@ -29,6 +26,12 @@ ReactDOM.render(
                     <Route exact path="/anonse" element={<Anonse store={initialState}/>} />
                     <Route exact path="/kontakt" element={<Kontakt />} />
                     <Route exact path="/cmentarz" element={<Graveyard store={initialState}/>} />
+                    {user && id && <Route path="/intencja"  element={<Intentions store={initialState} />} />}
+                    {user && id && <Route path="/mojekonto"  element={<Myaccount store={initialState} />} />}
+                    {user && id && <Route path="/paymentsummary"  element={<Paymentsummary store={initialState} />} />}
+                    <Route exact path="*"  element={<Main/>} />
+                    
+
 
     
 

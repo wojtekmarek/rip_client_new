@@ -1,6 +1,6 @@
 .userdata{
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 90%;
     margin-left: 5%;
     margin-bottom: 15px;
@@ -19,11 +19,33 @@
 	text-shadow:0px 1px 0px #e1e2ed;
 }
 
-.userdatacolumn{
+
+.userdatafield {
     display: flex;
-    flex-direction: column;
-    width: 50%;
+    flex-direction: row;
+    align-items: baseline;
+    width: 100%;
+    justify-content: space-around;
 }
-.inputdata{
-    width: 350px;
+.menuuser {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    background:linear-gradient(to bottom, #d1c9d1 5%, #4e4d4d 100%);
+    padding: 15px 0px;
+    border-radius: 10px;
+}
+.menuuserbutton {
+    background: none;
+    color: #ffffff;
+    border: none;
+    font-size: 16px;
+    font-weight: 700;
+    text-shadow:4px 5px 3px #241413;
+}
+
+.menuuserbutton:hover {
+    opacity: 0.7;
+    cursor: pointer;
 }

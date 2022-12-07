@@ -1,19 +1,36 @@
+
 .topmenurip{
     display: flex;
     flex-direction: row;
     width: 100%;
-    margin-top: 10px;
     justify-content: space-around;
     margin-bottom: 20px;
+	background:linear-gradient(to bottom, #d1c9d1 5%, #4e4d4d 100%);
+}
+
+.textdecerorationnone{
+	text-decoration:none;
+}
+.topmenuriplink{
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	font-weight:bold;
+	padding:11px 76px;
+	text-shadow:4px 5px 3px #241413;
+}
+.topmenuriplink:hover{
+cursor: pointer;
+opacity: 0.6;
 }
 .topmenubutton {
 	box-shadow: 14px 8px 0px 0px #756a69;
-	background:linear-gradient(to bottom, #d1c9d1 5%, #786867 100%);
+	background:linear-gradient(to bottom, #d1c9d1 5%, #4e4d4d 100%);
 	background-color:#d1c9d1;
 	border-radius:22px;
 	border:1px solid #e6d5d4;
 	display:inline-block;
-	cursor:pointer;
+	
 	color:#ffffff;
 	font-family:Arial;
 	font-size:17px;
@@ -23,7 +40,7 @@
 	text-shadow:4px 5px 3px #241413;
 }
 .topmenubutton:hover {
-	background:linear-gradient(to bottom, #786867 5%, #d1c9d1 100%);
+	background:linear-gradient(to bottom, #786867 5%, #4e4d4d 100%);
 	background-color:#786867;
 }
 .topmenubutton:active {
@@ -41,28 +58,28 @@ width: 100%;
     margin-top: 10px;
     margin-right: 15px;
     margin-bottom: 10px;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 .topmenubuttonlog {
     margin-left: 20px;
-	box-shadow: 14px 8px 0px 0px #756a69;
-	background:linear-gradient(to bottom, #d1c9d1 5%, #786867 100%);
-	background-color:#d1c9d1;
-	border-radius:22px;
-	border:1px solid #e6d5d4;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:17px;
-	font-weight:bold;
-	padding:11px 10px;
-	text-decoration:none;
-	text-shadow:4px 5px 3px #241413;
+    box-shadow: 4px 4px 0px 0px #6a6868;
+    background: linear-gradient(to bottom, #d1c9d1 5%, #4e4d4d 100%);
+    background-color: #d1c9d1;
+    border-radius: 10px;
+    border: 1px solid #e6d5d4;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 11px 10px;
+    text-decoration: none;
+    text-shadow: 4px 5px 3px #241413;
 }
 .topmenubuttonlog:hover {
-	background:linear-gradient(to bottom, #786867 5%, #d1c9d1 100%);
+	background:linear-gradient(to bottom, #786867 5%, #4e4d4d 100%);
 	background-color:#786867;
 }
 

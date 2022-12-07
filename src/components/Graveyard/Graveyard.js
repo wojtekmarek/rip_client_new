@@ -4,10 +4,9 @@ import "./styles.css"
 import RipMap from "../RipMap/RipMap";
 
 class Graveyard extends Component {
-    state = {
-
+    constructor(props) {
+        super(props);
     }
-
     componentDidMount = () => {
 
 
@@ -56,8 +55,8 @@ class Graveyard extends Component {
             <div>
                 <TopMenu key={0}/>
                 
-                <div className="kontent" key={2}>
-                    <RipMap key={3}/>
+                <div className="mapandsearchconteiner" key={2}>
+                    <RipMap key={3} urlback={this.props.store.backendadress}/>
                 </div>
             </div>
         )

@@ -2,7 +2,7 @@ import React,{ Component}from "react";
 import * as ReactDOM from 'react-dom';
 import"./RipMap.css"
 import axios from 'axios';
-import initialState from "../../reduser/store"
+
 
 class RipMap extends Component{
     constructor(props) {
@@ -15,12 +15,13 @@ class RipMap extends Component{
     };
     
     this.clikgrave= this.clikgrave.bind(this);
+    this.startSearching = this.startSearching.bind(this);
 }
 
     componentDidMount = () => {
       
-        console.log(initialState.backendadress);
-        fetch(initialState.backendadress+'/gravequarters/check')
+        console.log(this.props.backendadress);
+        fetch(this.props.urlback+'/gravequarters/check')
         .then(response => response.json())
         .then(json =>{
             console.log(json);
@@ -30,6 +31,53 @@ class RipMap extends Component{
 
 
     }
+
+    //funkcja wyszukiwania
+    startSearching = /*event*/ () => {
+        let inputValueArray;
+        let inputValue = document.querySelector('.RipFinderInput').value;
+
+        //let inputValue = event.target.value.split(/\s+/);
+        // if (inputValue[0].length > 2) {
+        //     this.sendSearchRequest(inputValue);
+        //     console.log('wale request');
+        // }
+
+        if (inputValue.length >= 3) {
+            inputValueArray = inputValue.split(/\s+/);
+            this.sendSearchRequest(inputValueArray);
+        } else {
+            console.log('Za mało znaków');
+            return;
+        }
+    }
+
+    sendSearchRequest = async (paramsArray) => {
+        console.log(this.props.backendadress);
+        const config = {
+            method: 'get',
+            url: this.props.urlback + '/burial/serchforclient',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            params: {
+                "Name": String(paramsArray[0]),
+                "LastName": String(paramsArray[1])
+            }
+        };
+        console.log(config);
+
+        await axios(config)
+            .then(async response => {
+                this.setState({
+                    searchResult: response.data
+                });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        console.log('SearchResult: ' + this.state.searchResult);
+    }
    
   
      clikgrave = async (e) =>{  
@@ -38,7 +86,7 @@ class RipMap extends Component{
             this.setState({showripdetail:true});
             var config = {
               method: 'get',
-              url: initialState.backendadress+'/gravequarters/sendquaterdetail',
+              url: this.props.urlback+'/gravequarters/sendquaterdetail',
               headers: { 
                 'Content-Type': 'application/json'
               },
@@ -729,7 +777,8 @@ class RipMap extends Component{
                 <div className="Find">
                     <div className="RipFinder">
                         <label id="leb">Wyszukaj</label>
-                        <input className="RipFinder"/>
+                        <input className="RipFinder RipFinderInput"/>
+                        <button onClick = {this.startSearching } > Szukaj </button>
                     </div>
                 </div>
                 <div className="Info">

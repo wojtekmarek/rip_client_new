@@ -43,7 +43,7 @@ class TopMenu extends Component {
 
                     {islogin ?
                         [
-                            <Link to="/mojekonto" key={3}>
+                            <Link to="/mojekonto" className="textdecerorationnone" key={3}>
                                 <Avatar color={Avatar.getRandomColor('sitebase', ['#c5c5d5', '#acacb3', '#c5c5c5'])}
                                     name="Konto" size={60} round="30px"  key={4}/>
                             </Link>,
@@ -54,8 +54,8 @@ class TopMenu extends Component {
              
 
                 <div className="topmenurip" key={7}>
-                    <Link to="/cmentarz" key={8}>
-                        <div className="topmenubutton" key={9}>
+                    <Link to="/cmentarz" className="textdecerorationnone" key={8}>
+                        <div className="topmenuriplink" key={9}>
                             Cmentarz
                         </div>
                     </Link>
@@ -64,21 +64,21 @@ class TopMenu extends Component {
                         
                     
 
-                       <Link to="/intencja">
-                            <div className="topmenubutton">
+                       <Link key={20} to="/intencja" className="textdecerorationnone">
+                            <div key={21} className="topmenuriplink">
                                 Intencja mszy
                             </div>
                         </Link>
 
                         ]
                     : []}
-                    <Link to="/anonse" key={16}>
-                        <div className="topmenubutton" key={17} >
+                    <Link to="/anonse" className="textdecerorationnone" key={16}>
+                        <div className="topmenuriplink" key={17} >
                             Ogłoszenia Parafialne
                         </div>
                     </Link>
-                    <Link to="/kontakt" key={18}>
-                        <div className="topmenubutton" key={19} >
+                    <Link to="/kontakt" className="textdecerorationnone" key={18}>
+                        <div className="topmenuriplink" key={19} >
                             Kontakt
                         </div>
                     </Link>

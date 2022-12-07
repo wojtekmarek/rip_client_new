@@ -1,7 +1,6 @@
 import TopMenu from "../TopMenu/TopMenu"
 import React,{Component} from "react";
-import "./styles.css"
-import { Link } from "react-router-dom";
+
 
 class GraveQuarters extends Component{
     state={

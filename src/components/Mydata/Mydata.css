@@ -1,0 +1,58 @@
+.displeyrow{
+    display: flex;
+    flex-direction: row;
+    font-weight: 800;
+    color:#4e4d4d;
+    margin: 10px;
+  
+}
+.inputdatamydata {
+    background-color: white;
+    border-radius: 8px;
+    box-sizing: border-box;
+    height: 25px;
+    width: 250px;
+}
+.userdatacolumn {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+
+}
+
+.labeldata{
+    width: 140px;
+}
+.buttonsavechange{ 
+    max-width: 300px;
+    box-shadow: 4px 4px 0px 0px #6a6868;
+    background: linear-gradient(to bottom, #d1c9d1 5%, #4e4d4d 100%);
+    background-color: #d1c9d1;
+    border-radius: 10px;
+    border: 1px solid #e6d5d4;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 11px 10px;
+    text-decoration: none;
+    text-shadow: 4px 5px 3px #241413;
+}
+.namefielderror{
+    border-color: red;
+
+}
+.errorfield{
+   
+        position: relative;
+        top: 24px;
+        left: -180px;
+        width: 250px;
+        margin-left: -70px;
+        margin-right: -180px;
+        font-size: 11px;
+        color: red;
+    
+}

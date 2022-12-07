@@ -1,7 +1,6 @@
 import axios from "axios"
 import { Link } from "react-router-dom"
 import "./Login.css"
-import serverurl from "../../reduser/store"
 import React, { Component } from "react";
 
 class Login extends Component {
@@ -20,9 +19,9 @@ class Login extends Component {
     
     //
     handleChange = (name,value) => {
-      console.log("zmiana");
-      console.log(value);
-      console.log(name);
+      //console.log("zmiana");
+      //console.log(value);
+      //console.log(name);
   
         this.setState({[name]: value });
     };
@@ -36,11 +35,12 @@ class Login extends Component {
         
        
             const url = this.props.store.backendadress + "/auth"
-            axios.post(url, {email:email,password:password})
+            await axios.post(url, {email:email,password:password})
             .then(response=>{
-               // console.log(response)
-                localStorage.setItem("token", response.token)
-            localStorage.setItem("id", response.id)
+              //  console.log(response.data.data)
+                localStorage.setItem("token", response.data.data.token)
+                localStorage.setItem("id", response.data.data.id)
+                localStorage.setItem("emailrip_app", email)
            // console.log(response.data);
             window.location = "/"
             })            
