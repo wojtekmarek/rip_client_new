@@ -14,6 +14,7 @@ class Myaccount extends Component {
         this.state = {
 
             showgrave: false,
+            showgravebutton: false,
             showmydata: true,
             showmyintencion: false,
             alertchangshow: false,
@@ -31,6 +32,10 @@ class Myaccount extends Component {
     }
 
     componentDidMount = () => {
+        setTimeout(() => {
+            console.log("aaa +"+this.changedata.current.state.ovnerquater);
+            this.setState({showgravebutton:this.changedata.current.state.ovnerquater});
+        }, "2000");
 
 
 
@@ -38,13 +43,31 @@ class Myaccount extends Component {
 
     }
     handleshowgrave = () => {
-        this.setState({
-            showgrave: true,
-            showmydata: false,
-            showmyintencion: false,
-            nrfield: 1
-
-        });
+        const { nrfield } = this.state;
+        
+        if (nrfield === 2) {
+            if (!this.changedata.current.state.changedata) {
+                this.setState({
+                    showgrave: true,
+                    showmydata: false,
+                    showmyintencion: false,
+                    nrfield: 1
+        
+                });
+            }else{
+                this.setState({ alertchangshow: true,
+                    nrfield: 1 });
+            }
+        }else{
+            this.setState({
+                showgrave: true,
+                showmydata: false,
+                showmyintencion: false,
+                nrfield: 1
+    
+            });
+        }
+       
 
 
     }
@@ -70,10 +93,6 @@ class Myaccount extends Component {
 
     handlemydata = () => {
         const { nrfield } = this.state;
-        //console.log(this.changedata.current);
-
-
-        // console.log(!this.changedata.current.state.changedata);
         if (nrfield === 2) {
             if (!this.changedata.current.state.changedata) {
                 this.setState({
@@ -98,27 +117,38 @@ class Myaccount extends Component {
 
     }
     handlemyintencion = () => {
-
-        this.setState({
-            showgrave: false,
-            showmydata: false,
-            showmyintencion: true,
-            nrfield: 3
-        });
+        const { nrfield } = this.state;
+        
+        if (nrfield === 2) {
+            if (!this.changedata.current.state.changedata) {
+                this.setState({
+                    showgrave: false,
+                    showmydata: false,
+                    showmyintencion: true,
+                    nrfield: 3
+                });
+            }else{
+                this.setState({ alertchangshow: true,
+                    nrfield: 3 });
+            }
+        }else{
+            this.setState({
+                showgrave: false,
+                showmydata: false,
+                showmyintencion: true,
+                nrfield: 3
+            });
+        }
+        
 
     }
     handleChange = (name, value) => {
-
-        // console.log("zmiana");
-        // console.log(value);
-        // console.log(name);
-
         this.setState({ [name]: value });
     }
 
     render() {
 
-        const { showgrave, showmydata, showmyintencion, alertchangshow } = this.state;
+        const { showgrave, showmydata, showmyintencion, alertchangshow,showgravebutton} = this.state;
         const { store } = this.props;
 
 
@@ -128,20 +158,21 @@ class Myaccount extends Component {
                 <TopMenu key={76} />
                 <div className="userdata" key={77}>
                     <div key={101} className="menuuser">
-                        <button key={102} className="menuuserbutton" onClick={this.handleshowgrave}>Pokaż moje kwatery</button>
+                        {showgravebutton?<button key={102} className="menuuserbutton" onClick={this.handleshowgrave}>Pokaż moje kwatery</button>:""}
                         <button key={103} className="menuuserbutton" onClick={this.handlemydata}>Pokaż moje dane</button>
                         <button key={104} className="menuuserbutton" onClick={this.handlemyintencion}>Pokaż moje Intencje</button>
 
                     </div>
-                    {showmydata ? [<Mydata key={"mydata"} store={store} ref={this.changedata} />] : []}
-                    {(showgrave) ? [<Myquater key={200} store={store} email={"useremail"} />] : []}
+                    {showmydata ? [<Mydata key={"mydata"} store={store} props={this.showgravebutton} ref={this.changedata} />] : []}
+                    {(showgrave) ? [<Myquater key={200} store={store} email={"useremail"}  />] : []}
                     {(showmyintencion) ? [<Myintencion key={300} store={store} email={"useremail"} />] : []}
                     {alertchangshow ? [
                         <div key="paymentnotyficacion" className="paymentnotyficacion">
                             <div key={"notyficatecodeelseheader"} className="notyficatecode204header">
                                 W zakładce moje dane są nie zapisane zmiany.
                             </div>,
-                            <div key={"notyficatecodeelsescribe"} className="notyficatecode204scribe" > By zachować zmiany wciśnij przycisk zapisz zmiany , by je anulować wciśnij przycisk anuluj.</div>,
+                            <div key={"notyficatecodeelsescribe"} className="notyficatecode204scribe" > 
+                            By zachować zmiany wciśnij przycisk zapisz zmiany , by je anulować wciśnij przycisk anuluj.</div>,
                             <div key={"notyficatecodeelserowdisplay"} className="notyficatecode204rowdisplay">
                                 <button key={"alertsavedate"} className="notyficatecode204paybuton"
                                     onClick={() => {

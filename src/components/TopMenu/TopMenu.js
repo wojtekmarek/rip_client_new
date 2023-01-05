@@ -2,11 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./TopMenu.css";
 import Avatar from 'react-avatar';
-
-
-
-
-
 class TopMenu extends Component {
     state = {
         islogin: Boolean,
@@ -27,7 +22,7 @@ class TopMenu extends Component {
 
         window.location = "/"
     }
-    handleLogin = () => { 
+    handleLogin = () => {
 
         window.location = "/login"
     }
@@ -38,20 +33,20 @@ class TopMenu extends Component {
         const { islogin } = this.state
 
         return (
-            <div className="topmenuconteiner"key={1}>
-                <div className="usersection"key={2}>
+            <div className="topmenuconteiner" key={1}>
+                <div className="usersection" key={2}>
 
                     {islogin ?
                         [
                             <Link to="/mojekonto" className="textdecerorationnone" key={3}>
                                 <Avatar color={Avatar.getRandomColor('sitebase', ['#c5c5d5', '#acacb3', '#c5c5c5'])}
-                                    name="Konto" size={60} round="30px"  key={4}/>
+                                    name="Konto" size={60} round="30px" key={4} />
                             </Link>,
                             <button className="topmenubuttonlog" onClick={this.handleLogout} key={5}>Wyloguj się  </button>]
                         : [<button className="topmenubuttonlog" onClick={this.handleLogin} key={6}>Zaloguj się </button>]}
                 </div>
 
-             
+
 
                 <div className="topmenurip" key={7}>
                     <Link to="/cmentarz" className="textdecerorationnone" key={8}>
@@ -60,18 +55,18 @@ class TopMenu extends Component {
                         </div>
                     </Link>
                     {islogin ?
-                    [
-                        
-                    
+                        [
 
-                       <Link key={20} to="/intencja" className="textdecerorationnone">
-                            <div key={21} className="topmenuriplink">
-                                Intencja mszy
-                            </div>
-                        </Link>
+
+
+                            <Link key={20} to="/intencja" className="textdecerorationnone">
+                                <div key={21} className="topmenuriplink">
+                                    Intencja mszy
+                                </div>
+                            </Link>
 
                         ]
-                    : []}
+                        : []}
                     <Link to="/anonse" className="textdecerorationnone" key={16}>
                         <div className="topmenuriplink" key={17} >
                             Ogłoszenia Parafialne
@@ -82,10 +77,6 @@ class TopMenu extends Component {
                             Kontakt
                         </div>
                     </Link>
-                    
-
-
-
                 </div>
             </div>
         )

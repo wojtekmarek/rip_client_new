@@ -17,7 +17,8 @@ class Myquater extends Component {
             exumationlist: [],
             ovnerhaveburialinquater: false,
             userhavequater: false,
-            ovnerhaveburialexumation: false
+            ovnerhaveburialexumation: false,
+            ovnerdonthaveburialexumation:false
 
         }
         this.handlecheckexumation = this.handlecheckexumation.bind(this);
@@ -92,6 +93,7 @@ class Myquater extends Component {
 
         axios.get(this.props.store.backendadress + '/exhumation/getdataexhumationforclient', { params: { listidburial } })
             .then(res => {
+                console.log(res);
                 if (res.data[0] !== undefined) {
                     var list=[];
                     var changequater=false;
@@ -101,7 +103,7 @@ class Myquater extends Component {
                         if(element.ChangeOfBurialPlace){changequater="Tak";}else{changequater="Nie";}
                        list.push(
                         <div className="rowquater" key={233}>
-                                        <div className="columnoneexumation" key={element._id+234}>{listidburial.indexOf(element.Burial)}</div>
+                                        <div className="columnoneexumation" key={element._id+234}>{listidburial.indexOf(element.Burial)+1}</div>
                                         <div className="columntwoexumation" key={element._id+235}>{element.PurposeExhumation}</div>
                                         <div className="columnthreeexumation" key={element._id+236}>{element.Scribe}</div>
                                         <div className="columnfoureexumation" key={element._id+237}>{changequater}</div>
@@ -118,14 +120,21 @@ class Myquater extends Component {
                         ovnerhaveburialexumation: true
                     });
                     document.getElementById("exumation").style.visibility="visible";
+                }else if(res.status ===204) {
+                   
+                    this.setState({
+                        
+                        ovnerdonthaveburialexumation: true
+                    });
                 }
+
 
             })
     }
 
 
     render() {
-        const { userhavequater, listquaters, listburial, ovnerhaveburialinquater, exumationlist, ovnerhaveburialexumation } = this.state
+        const { userhavequater, listquaters, listburial, ovnerhaveburialinquater, exumationlist, ovnerhaveburialexumation,ovnerdonthaveburialexumation } = this.state
 
         return (
             <div className="dataquater" key={201}>
@@ -159,7 +168,9 @@ class Myquater extends Component {
                             </div>
                             {listburial}</div>
                         , <button className="exumationbutton" onClick={this.handlecheckexumation} key={230}>Sprawdz czy były dokonywane eksumacje</button>
+                        ,<div>{ovnerdonthaveburialexumation ? <div className="ovnerdonthaveburialexumation" key={"ovnerdonthaveburialexumation"}>Pochówki nie posiadją eksumacji</div>:""}</div>
                         , <div id="exumation" className="exumation" key={231}>
+                            
                             {ovnerhaveburialexumation ? [
                                 <div className="tablequater" key={232}>
                                     <div className="rowquater" key={233}>
@@ -172,7 +183,9 @@ class Myquater extends Component {
                                        
                                     </div>
                                     {exumationlist}</div>
-                            ] : [<div key={241}>Pochówki nie posiadają eksumacji</div>]}</div>
+                            ] : [<div key={241}>Sprawdź czy były dokonywane ekshumacje</div>]}
+                            {ovnerdonthaveburialexumation ? <div className="rowquater" key={"ovnerdonthaveburialexumation"}>Pochówki nie posiadają ekshumacji</div>:""}
+                             </div>
 
                     ] : [])
 

@@ -8,20 +8,23 @@ class Intentions extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            intencionscribe: String,
-            offering: Number,
+            intencionscribe: "",
+            offering: -1,
             masslist: [],
             mass: String,
-            massscribe:String,
+            massscribe: "",
             erroreez: "",
+            errorofering: false,
             intencionrez: false,
-            intencion:String,
-            notyficacion:""
+            intencion: String,
+            notyficacion: ""
+
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
         this.handleCancel = this.handleCancel.bind(this);
+        this.validoffering = this.validoffering.bind(this);
     }
     componentDidMount = async () => {
         // sprawdzic czy zostala rospoczeta rezerwacja intencji 
@@ -43,15 +46,26 @@ class Intentions extends Component {
         } else {
             // sprawdzic czy oplacona i dopiero przekierowac
             //window.location = "/paymentsummary"
-            
-            
+            console.log("edit");
+
             var Payment_id = localStorage.getItem("Payment_id");
             var amount = localStorage.getItem("Amount");
             var mass = localStorage.getItem("Mass");
             var massscribe = localStorage.getItem("MassScribe");
             var textintens = localStorage.getItem("Textintens");
-            if ( Payment_id != null && amount != null && mass != null && massscribe != null && textintens != null) {
-                massscribe=massscribe.replace("mszę","Msza").replace("godzinę","godzina");
+            if (Payment_id != null && amount != null && mass != null && massscribe != null && textintens != null) {
+
+                massscribe = massscribe.replace("mszę", "Msza").replace("godzinę", "godzina");
+                data = await (
+                    await fetch(this.props.store.backendadress + '/mass/availablemass')
+                ).json();
+                list = [{ value: mass, label: massscribe }];
+                data.forEach(element => {
+                    //console.log(element);
+                    let label = "Msza z dnia  " + element.Date_Of_even.slice(0, 10).split("-").reverse().join("-") + " godzina " + element.Date_Of_even.slice(11, 16);
+                    list.push({ value: element._id, label: label })
+
+                });
                 this.setState({
                     intencion: check,
                     Payment_id: Payment_id,
@@ -59,8 +73,8 @@ class Intentions extends Component {
                     mass: mass,
                     massscribe: massscribe,
                     intencionscribe: textintens,
-                    intencionrez:true,
-                    intencionrezvalue: "value={textintens}"
+                    intencionrez: true,
+
                 })
             }
         }
@@ -68,26 +82,25 @@ class Intentions extends Component {
 
     }
     handleChange = (name, value) => {
-        var {masslist}=this.state;
+        var { masslist } = this.state;
         // console.log("zmiana");
         // console.log(value);
         // console.log(name);
 
         this.setState({ [name]: value });
-        if(name==="mass"){
+        if (name === "mass") {
             //console.log(value);
-           // console.log(masslist);
-            for(let i=0;i<masslist.length;i++){
-                if(masslist[i].value===value)
-                {  // console.log("in"+masslist[i]);
-                    this.setState({massscribe:masslist[i].label});
-                    i=masslist.length;
+            // console.log(masslist);
+            for (let i = 0; i < masslist.length; i++) {
+                if (masslist[i].value === value) {  // console.log("in"+masslist[i]);
+                    this.setState({ massscribe: masslist[i].label });
+                    i = masslist.length;
                 }
             }
         }
     };
     handleEdit = async () => {
-        var { intencionscribe, offering, mass,massscribe,intencion } = this.state;
+        var { intencionscribe, offering, mass, massscribe, intencion } = this.state;
         //dopisac walidacje
         //alert("wyslij" + intencionscribe+offering+mass+ "   "+localStorage.getItem("id"));
         //console.log(this.props.store.backendadress);
@@ -111,14 +124,14 @@ class Intentions extends Component {
             .then(async response => {
                 if (response.status === 200) {
                     //edycja intencja
-                    
+
                     localStorage.setItem("Amount", offering);
                     localStorage.setItem("Mass", mass);
                     localStorage.setItem("MassScribe", massscribe);
                     localStorage.setItem("Textintens", intencionscribe);
 
                     window.location = "/paymentsummary"
-                    
+
 
                 } else {
 
@@ -127,7 +140,7 @@ class Intentions extends Component {
             })
 
     }
-    handleCancel = async () => { 
+    handleCancel = async () => {
         var { mass, intencion, Payment_id } = this.state;
         //dodać potwierdzenie
         var config = {
@@ -150,7 +163,7 @@ class Intentions extends Component {
             .then(response => {
                 if (response.status === 200) {
                     this.setState({ notyficacion: response.data });
-                    document.getElementById("notyfication").style.background ="#88e988";
+                    document.getElementById("notyfication").style.background = "#88e988";
                     document.getElementById("notyfication").style.visibility = "visible";
                     console.log(response.data);
                     localStorage.removeItem("Payment_id");
@@ -173,50 +186,72 @@ class Intentions extends Component {
 
 
             })
-     }
-    
+    }
+    validoffering = (value) => {
+        if (parseInt(value, 10) < 0) {
+            this.setState({ errorofering: true });
+            return false
+
+        } else {
+            this.setState({ errorofering: false });
+            return true
+        }
+    }
     handleSubmit = async () => {
-        var { intencionscribe, offering, mass,massscribe } = this.state;
-        //dopisac walidacje
-        //alert("wyslij" + intencionscribe+offering+mass+ "   "+localStorage.getItem("id"));
-        //console.log(this.props.store.backendadress);
+        var { intencionscribe, offering, mass, massscribe } = this.state;
+        /*console.log(intencionscribe !== "");
+        console.log(this.validoffering(offering));
+        console.log(massscribe !== "");
 
-        var config = {
-            method: 'post',
-            url: this.props.store.backendadress + '/mass/checkavailableaddinstans',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+        console.log(intencionscribe !== "" && this.validoffering(offering) && massscribe !== "");*/
+        if (intencionscribe !== "" && this.validoffering(offering) && massscribe !== "") {
+            console.log("poszło");
+            var config = {
+                method: 'post',
+                url: this.props.store.backendadress + '/mass/checkavailableaddinstans',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
 
-            data: {
-                "Paid_Off": false,
-                "Textintens": intencionscribe,
-                "Mass": mass,
-                "Ovner": localStorage.getItem("id"),
-                "Amount": offering
-            }
-        };
-
-        await axios(config)
-            .then(async response => {
-                if (response.data.Intention && response.data.Payment_id) {
-                    //zarezerwowana intencja
-                    localStorage.setItem("Payment_id", response.data.Payment_id);
-                    localStorage.setItem("Intention", response.data.Intention);
-                    localStorage.setItem("Amount", offering);
-                    localStorage.setItem("Mass", mass);
-                    localStorage.setItem("MassScribe", massscribe);
-                    localStorage.setItem("Textintens", intencionscribe);
-
-                    window.location = "/paymentsummary"
-                    
-
-                } else {
-
+                data: {
+                    "Paid_Off": false,
+                    "Textintens": intencionscribe,
+                    "Mass": mass,
+                    "Ovner": localStorage.getItem("id"),
+                    "Amount": offering
                 }
+            };
 
-            })
+            await axios(config)
+                .then(async response => {
+                    if (response.data.Intention && response.data.Payment_id) {
 
+                        localStorage.setItem("Payment_id", response.data.Payment_id);
+                        localStorage.setItem("Intention", response.data.Intention);
+                        localStorage.setItem("Amount", offering);
+                        localStorage.setItem("Mass", mass);
+                        localStorage.setItem("MassScribe", massscribe);
+                        localStorage.setItem("Textintens", intencionscribe);
+
+                        window.location = "/paymentsummary"
+
+                    } else {
+                        alert("Coś poszlo nie tak spróbuj ponownie za chwile")
+                    }
+                })
+        } else {
+            console.log("walidacja");
+            document.getElementById("notyfication").style.background = "#e38989";
+            document.getElementById("notyfication").style.visibility = "visible";
+            this.setState({ notyficacion: "Wszystkie pola formularza muszą być uzupełnione" });
+            setTimeout(() => {
+                this.setState({ notyficacion: "" });
+                document.getElementById("notyfication").style.background = "#e38989";
+
+                document.getElementById("notyfication").style.visibility = "hidden";
+
+            }, "3000");
+        }
 
     }
 
@@ -224,8 +259,8 @@ class Intentions extends Component {
 
 
 
-        const { masslist, erroreez, intencionrez  ,offering,massscribe,notyficacion,intencionrezvalue} = this.state;
-     
+        const { masslist, erroreez, intencionrez, errorofering, offering, massscribe, notyficacion, intencionscribe } = this.state;
+
         return (
 
 
@@ -239,10 +274,10 @@ class Intentions extends Component {
                     <label key="intencionformfield" className="intencionformfield">
                         Proponowany termin odprawienia Mszy
                         <Select
-                        key="select"
+                            key="select"
                             className="basic-single widthselect"
                             classNamePrefix="select"
-                            placeholder={intencionrez?massscribe:"Wybierz"}
+                            placeholder={intencionrez ? massscribe : "Wybierz"}
                             name="mass"
                             onChange={(e) => { this.handleChange("mass", e.value) }}
                             getOptionLabel={option => option.label}
@@ -251,15 +286,15 @@ class Intentions extends Component {
                         />
 
                     </label>
-                    <label  key="intencionformfieldtwo" className="intencionformfield">
+                    <label key="intencionformfieldtwo" className="intencionformfield">
                         Twoja intencja
-                        <input 
-                        key="intencionscribe"
+                        <textarea
+                            key="intencionscribe"
                             type="textarea"
                             name="intencionscribe"
                             className="intencionscribe"
-                            placeholder={intencionrez?"":"Wpisz treść Swojęj intencji"}
-                            {...intencionrezvalue }
+                            placeholder={intencionrez ? "" : "Wpisz treść Swojęj intencji"}
+                            value={intencionscribe || ''}
                             pattern=""
                             onChange={(e) => { this.handleChange(e.target.name, e.target.value) }}
                             rows={5}
@@ -268,35 +303,34 @@ class Intentions extends Component {
 
                     </label>
 
-                    <label  key="intencionformfieldthree" className="intencionformfield">
+                    <label key="intencionformfieldthree" className="intencionformfield">
                         Zadeklaruj Ofiarę
-                        <input 
-                        key="offering"
-                        type="number"
+                        <input
+                            key="offering"
+                            type="number"
                             name="offering"
+                            id="offeringinput"
                             className="offeringinput"
-                            placeholder={intencionrez?offering:"100"}
+                            placeholder={intencionrez ? offering : "100"}
                             pattern=""
                             onChange={(e) => { this.handleChange(e.target.name, e.target.value) }}
-                            onKeyPress={(event) => {
-                                if (!/[0-9]/.test(event.key)) {
-                                    event.preventDefault();
-                                }
-                            }}
-                        />
 
+                            onBlur={(e) => { this.validoffering(e.target.value) }}
+
+                        />
+                        {errorofering ? [<div key="erroroffering" className="errorofering">Ofiara nie moze być mniejsza niż zero</div>] : ""}
                     </label>
                     {(!intencionrez) ? [
-                     <button  key="intencionbuttonsubmit" className="intencionbutton" onClick={this.handleSubmit}>Zgłoś swoją intencję i dokonaj ofiary</button>
-                       ,(erroreez !== "") ? <div key="errormesage" className="errormesage">erroreez</div> : ""
+                        <button key="intencionbuttonsubmit" className="intencionbutton" onClick={this.handleSubmit}>Zgłoś swoją intencję i dokonaj ofiary</button>
+                        , (erroreez !== "") ? <div key="errormesage" className="errormesage">erroreez</div> : ""
 
 
                     ] : [
-                       
-                            <button key="intencionbuttonedit" className="intencionbutton " onClick={this.handleEdit}> Edytuj swoją intencję i dokonaj ofiary</button>
-                            ,<button key="intencionbuttoncancel" className="intencionbutton " onClick={this.handleCancel}>Chce anulować zgłaszanie intencji </button>
-                        ]}
-                        <div key="notyfication" id="notyfication" className="notyfication">{notyficacion}</div>
+
+                        <button key="intencionbuttonedit" className="intencionbutton " onClick={this.handleEdit}> Edytuj swoją intencję i dokonaj ofiary</button>
+                        , <button key="intencionbuttoncancel" className="intencionbutton " onClick={this.handleCancel}>Chce anulować zgłaszanie intencji </button>
+                    ]}
+                    <div key="notyfication" id="notyfication" className="notyfication">{notyficacion}</div>
 
                 </div>
 

@@ -41,7 +41,7 @@ class Paymentsummary extends Component {
         }
     }
     handleEdit = async () => {
-        alert("progress implementacio");
+        window.location="/intencja";
     }
     handleCancel = async () => {
         var { mass, intencion, Payment_id } = this.state;

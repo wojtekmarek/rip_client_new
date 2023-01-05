@@ -28,7 +28,8 @@ class Myintencion extends Component {
     componentDidMount = () => {
         axios.get(this.props.store.backendadress + '/inten/myintecion', { params: { Ovner: localStorage.getItem("id") } })
             .then(res => {
-                if (res.data[0] !== undefined) {
+                console.log(res.data)
+                if (res.data[0] !== undefined&&res.data !=="Klijent nie posiada intencji") {
                     let list = [];
                     console.log(res.data)
                     res.data.forEach(element => {
@@ -157,7 +158,7 @@ class Myintencion extends Component {
                 {clienthaveintecion ? [<div className="intencionconteiner" key={305}>{listintension}</div>] : [<div className="nullintecion" key={302}>
                     <div className="scribenullintecion" >Nie posiadasz żadnych intencji </div>
                     <Link to="/intencja" className="buttonorderinencion" key={304}>
-                        Klikni by zamówić intencje mszalną
+                        Kliknij by zamówić intencje mszalną
                     </Link></div>]}
                 {paymentnotyficacion ? [
                     <div key="paymentnotyficacion" className="paymentnotyficacion">

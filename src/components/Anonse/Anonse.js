@@ -12,8 +12,6 @@ class Anonse extends Component{
         }
 }
     componentDidMount= () =>{
-        //console.log("fetch");
-        //console.log(this.props.store.backendadress);
        
         fetch(this.props.store.backendadress+'/anonse/listanonse')
         .then(response => response.json())

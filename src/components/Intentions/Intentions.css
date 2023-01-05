@@ -7,6 +7,8 @@
 }
 
 .intencionscribe {
+	padding: 10px;
+	box-sizing: border-box;
     width: 500px;
     height: 200px;
     border-radius: 6px;
@@ -67,55 +69,25 @@
     width: 100%;
     background: #88e988;
     height: 49px;
-    font-size: 41px;
+    font-size: 21px;
     margin-top: 16px;
     visibility: hidden;
     text-align: center;
     color: #7a6f6f;
     text-shadow: none;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-.userdatacolumnintentions{
+.errorofering {
     display: flex;
-    flex-direction: column;
-    width: 50%;
-}
-.inputdata{
-    width: 350px;
-}
-
-.wyborUslugiintentions{
-	border-radius:10px;
-	border:1px solid #adadad;
-	padding:32px 76px;
-	box-sizing: border-box;
-	box-shadow: 11px 13px 7px 0px #78797a;
-	margin: 0 auto;
-	justify-content: center;
-	display: flex;
+    width: 300px;
+    color: red;
+    height: 12px;
+    margin-bottom: -12px;
 }
 
 
 
-form{
-	margin: 0 auto;
-	
-	
-}
 
-h1{
-	display: flex;
-	margin: 0 auto;
-	justify-content: center;
-}
+
+
+
+

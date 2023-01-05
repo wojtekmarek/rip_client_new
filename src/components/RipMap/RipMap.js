@@ -11,49 +11,84 @@ class RipMap extends Component{
         this.state={
         visiblelist: [],
         ripdetail:[{"e":1}],
-        showripdetail:false
+        showripdetail:false,
+        findresult:"",
+        namesearch:"",
+        lastnamesearch:"",
+        datedethsearch:"",
+        namesearchfalse:false,
+        lastnamesearchfalse:false,
+        datedethsearchfalse:false,
+        searchResult:[]
     };
     
     this.clikgrave= this.clikgrave.bind(this);
     this.startSearching = this.startSearching.bind(this);
+    this.handleChange=this.handleChange.bind(this);
+    this.handleBlur=this.handleBlur.bind(this);
+    this.mousunhoverhandler=this.mousunhoverhandler.bind(this);
+    this.moushoverhandler=this.moushoverhandler.bind(this);
 }
 
     componentDidMount = () => {
       
-        console.log(this.props.backendadress);
+       
         fetch(this.props.urlback+'/gravequarters/check')
         .then(response => response.json())
         .then(json =>{
-            console.log(json);
             this.setState({visiblelist: json})
         })
 
 
 
     }
-
-    //funkcja wyszukiwania
-    startSearching = /*event*/ () => {
-        let inputValueArray;
-        let inputValue = document.querySelector('.RipFinderInput').value;
-
-        //let inputValue = event.target.value.split(/\s+/);
-        // if (inputValue[0].length > 2) {
-        //     this.sendSearchRequest(inputValue);
-        //     console.log('wale request');
-        // }
-
-        if (inputValue.length >= 3) {
-            inputValueArray = inputValue.split(/\s+/);
-            this.sendSearchRequest(inputValueArray);
-        } else {
-            console.log('Za mało znaków');
-            return;
+    moushoverhandler=(id)=>{
+       // alert("najechane"+id);
+        document.getElementById(id).style.background="rgb(124, 123, 32)";
+    }
+    mousunhoverhandler=(id)=>{
+       // alert("zjechane"+id);
+        document.getElementById(id).style.background="rgb(238, 230, 178)";
+    }
+    handleBlur = (name, value) => {
+ 
+        var regstring = new RegExp(/[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]/);
+        if(regstring.test(value)){
+            this.setState({[name+"false"]:false})
+        }else{
+            this.setState({[name+"false"]:true})
         }
     }
+    handleChange = (name, value) => {
+        
+        this.setState({[name]:value})
+    }
 
-    sendSearchRequest = async (paramsArray) => {
-        console.log(this.props.backendadress);
+    //funkcja wyszukiwania
+    startSearching = () => {
+        const{namesearchfalse,lastnamesearchfalse,datedethsearchfalse}=this.state;
+        if(namesearchfalse&&lastnamesearchfalse&&datedethsearchfalse)
+        {
+            alert("niepoprawne dane wyszukiwania");
+            
+        }else{
+           //wysukiwanie
+           this.sendSearchRequest();
+        }
+        
+
+    
+    }
+
+    sendSearchRequest = async () => {
+        const{namesearch,lastnamesearch,datedethsearch}=this.state;
+        var namesearchpreper=namesearch.trim();
+        namesearchpreper=namesearchpreper.charAt(0).toUpperCase() + namesearchpreper.slice(1);
+       
+        var lastnamesearchpreper=lastnamesearch.trim();
+        lastnamesearchpreper=lastnamesearchpreper.charAt(0).toUpperCase() + lastnamesearchpreper.slice(1);
+     
+    
         const config = {
             method: 'get',
             url: this.props.urlback + '/burial/serchforclient',
@@ -61,14 +96,38 @@ class RipMap extends Component{
                 'Content-Type': 'application/json'
             },
             params: {
-                "Name": String(paramsArray[0]),
-                "LastName": String(paramsArray[1])
+                "Name": namesearchpreper,
+                "LastName": lastnamesearchpreper,
+                "Date":datedethsearch
             }
         };
         console.log(config);
 
         await axios(config)
             .then(async response => {
+                console.log(response.data);
+                if(response.data[0]!==undefined)
+                {   var gravesearch=[];
+                    response.data.forEach(element => {
+                        let text=element.Namedeceased+" "+element.LastNamedeceased+" "+element.DateOfDeath.slice(0, 10).split("-").reverse().join("-");
+                        let grave=React.createElement("div",{id:element._id,
+                            className:"findresult",
+                        onMouseEnter:() => {this.moushoverhandler(element.GraveQuartersnumber)},
+                        onMouseLeave:() => {this.mousunhoverhandler(element.GraveQuartersnumber)}
+        
+                        },text
+                        );
+                        gravesearch.push(grave);
+                     
+                    });
+                    ReactDOM.render(gravesearch, document.getElementById("info"));
+                
+                }else{
+                    let graveerror=React.createElement("div",{id:"errorfind",
+                    },"Nie znaleziono pochówku "
+                        );
+                    ReactDOM.render(graveerror, document.getElementById("info"));
+                }
                 this.setState({
                     searchResult: response.data
                 });
@@ -81,8 +140,14 @@ class RipMap extends Component{
    
   
      clikgrave = async (e) =>{  
-        //console.log(e.target.id);
-        if(!this.state.showripdetail){
+        
+        if(this.state.showripdetail){
+      
+                document.getElementById('detailquater').remove();
+                this.setState({showripdetail:false});
+              
+                
+        }
             this.setState({showripdetail:true});
             var config = {
               method: 'get',
@@ -105,36 +170,48 @@ class RipMap extends Component{
               
             });
 
-           var innerhtml='<div id="close"></div>';
-           //dopisz dane 
-           this.state.ripdetail.map(val => (                
-                innerhtml= innerhtml +"imie:"+val.Namedeceased+'</br>' 
+           var innerhtml='<div id="close"></div>'
+           +'<div class="detailgraverow"><div class="detailgravecolumn">Imie</div><div class="detailgravecolumn">Nazwisko </div>'
+           +'<div class="detailgravecolumn">Data śmierci</div> </div>';
+           
+           this.state.ripdetail.map(val => (              
+            
+                innerhtml= innerhtml + '<div class="detailgraverow"><div class="detailgravecolumn">'+val.Namedeceased+'</div>'
+                +'<div class="detailgravecolumn">'+val.LastNamedeceased+'</div>'
+                +'<div class="detailgravecolumn">'+val.DateOfDeath.slice(0, 10).split("-").reverse().join("-")+'</div> </div>'
            ));
-            var b = document.getElementById(e.target.id);
+           var classpozition="";
+           var b;
+          if(e.target.id>=119&&e.target.id<=160)
+          {
+            b= document.getElementById("Map");
+            classpozition="transformpopup";
+
+          }else{
+             b= document.getElementById(e.target.id);
+            classpozition="normalpopup";
+          }
+            
            var a = document.createElement("div");
             a.setAttribute('id',"detailquater");
+            a.setAttribute('class',classpozition);
             a.innerHTML=innerhtml;
             b.appendChild(a);
-           // var listonquater=React.createElement("div",{id:"detailquaterlist"},innerhtml)
             var close=React.createElement("div",{id:"closebutton",
                                            onClick:() => {document.getElementById('detailquater').remove();this.setState({showripdetail:false});}
                            
                                        },"X"
                                            );
-         // b.appendChild(listonquater);
-        //  b.appendChild(close);C:\Users\piotr\Desktop\studia\szkielety\client\clientrip\src\components\RipMap\RipMap.js
            ReactDOM.render(close, document.getElementById("close"));
         }
        
-              
+             
    
-             }
-   
-         //
+    
    
     
     render(){
-       
+               const{findresult ,namesearchfalse ,lastnamesearchfalse, datedethsearchfalse,namesearch,lastnamesearch,datedethsearch}=this.state
         console.log(this, "render");
 
        /* ripdetail.forEach((rip) => {
@@ -158,7 +235,7 @@ class RipMap extends Component{
        
         <div className="Containerrip">
             <div className="tlo1">
-                <div className="Map">
+                <div className="Map"  id="Map">
                 <div className="A">
                     A
                     <div className={"a1 "+ (this.state.visiblelist[0] ? 'isburial' : 'isnotburial')} id="1" onClick={this.clikgrave}>
@@ -579,7 +656,7 @@ class RipMap extends Component{
                     <div className={"d11 "+ (this.state.visiblelist[128] ? 'isburial' : 'isnotburial')} id="129" onClick={this.clikgrave}>
                         <h5>11</h5>
                     </div>
-                    <div className={"d12 "+ (this.state.visiblelist[129] ? 'isburial' : 'isnotburial')} id="115" onClick={this.clikgrave}>
+                    <div className={"d12 "+ (this.state.visiblelist[129] ? 'isburial' : 'isnotburial')} id="130" onClick={this.clikgrave}>
                         <h5>12</h5>
                     </div>
                 </div>
@@ -775,15 +852,47 @@ class RipMap extends Component{
                 
                 <div className="Boczek">
                 <div className="Find">
-                    <div className="RipFinder">
+                    <div className="RipFinderrowcenter">
                         <label id="leb">Wyszukaj</label>
-                        <input className="RipFinder RipFinderInput"/>
-                        <button onClick = {this.startSearching } > Szukaj </button>
                     </div>
+                    <div className="RipFinderrow">
+                        <label id="leb">Imię:</label>
+                        <input className="RipFinderInput" 
+                        name="namesearch"
+                       value={namesearch || ''} 
+                       onChange={(e) => { this.handleChange(e.target.name, e.target.value) }}
+                       onBlur={(e) => { this.handleBlur(e.target.name, e.target.value) }} />
+                   {namesearchfalse ? <div className="errorfieldsearch" key={"7910error"}>Imię musi składać się tylko z liter </div> : ""}
+                    </div>
+                   
+                    <div className="RipFinderrow">
+                        <label id="leb">Nazwisko:</label>
+                        <input className="RipFinderInput"  
+                        name="lastnamesearch"
+                       value={lastnamesearch || ''} 
+                       onChange={(e) => { this.handleChange(e.target.name, e.target.value) }}
+                       onBlur={(e) => { this.handleBlur(e.target.name, e.target.value) }} />
+                  {lastnamesearchfalse ? <div className="errorfieldsearch" key={"7911error"}>Nazwisko może składać się tylko z liter </div> : ""}
+                    </div>
+                    <div className="RipFinderrow">
+                        <label id="leb">Data śmierci:</label>
+                        <input className="RipFinderInput"
+                        type="date"
+                       name="datedethsearch"
+                       value={datedethsearch || ''} 
+                       onChange={(e) => { this.handleChange(e.target.name, e.target.value) }}
+                       />
+                   {datedethsearchfalse ? <div className="errorfieldsearch" key={"7912error"}>Data ma niepoprawny format </div> : ""}
+                        
+                    </div>
+                    <div className="RipFinderrowcenter">
+                    <button className="findbutton"onClick = {this.startSearching } > Szukaj </button>
+                    </div>
+                    
+     
                 </div>
-                <div className="Info">
-                {/*<div className="rip">{ripdetail}</div>*/}
-                Hubert to baran
+                <div className="Info" id="info">
+                {findresult}
 
                 </div>
                 

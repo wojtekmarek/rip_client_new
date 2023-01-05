@@ -8,21 +8,51 @@
 #closebutton {
     position: absolute;
     top: 3px;
-    right: 10px;
+    right: 3px;
     border: 1px solid #000;
     box-sizing: border-box;
+    text-align: center;
     width: 15px;
     font-weight: 700;
+    cursor: pointer;
 }
-#detailquater {
+
+.transformpopup {
     width: 300px;
-    height: 117px;
+    height: auto;
+    background-color: #d4d4d4;
+    color: black;
+    position: absolute;
+    top: 162px;
+    left: 402px;
+    display: flex;
+    flex-direction: column;
+    z-index: 5;
+    padding-bottom: 10px;
+}
+.normalpopup{
+    width: 300px;
+    height: auto;
     background-color: #d4d4d4;
     color: black;
     position: relative;
     top: -16px;
     left: 0px;
+    display: flex;
+    flex-direction: column;
     z-index: 5;
+    padding-bottom: 10px;
+}
+.detailgraverow {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    justify-content: space-around;
+    margin-top: 25px;
+}
+.detailgravecolumn{
+font-size: medium;
 }
 .Boczek {
     margin-left: 30px;
@@ -58,36 +88,74 @@
     margin-top: 10px;
 
 }
-.RipFinder{
-    width: 350px;
+.RipFinderrowcenter{
+display: flex;
+width: 100%;
+justify-content: center;
+margin-bottom: 5px;
 }
+.RipFinderrow {
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    align-self: center;
+    margin-bottom: 15px;
+}
+.findbutton {
+    box-shadow: 4px 4px 0px 0px #6a6868;
+    background: linear-gradient(to bottom, #d1c9d1 5%, #4e4d4d 100%);
+    background-color: #d1c9d1;
+    border-radius: 10px;
+    border: 1px solid #e6d5d4;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 4px 10px;
+    text-decoration: none;
+    text-shadow: 4px 5px 3px #241413;
+    cursor: pointer;
+}
+
+
 .Find{
     display: flex;
+    flex-direction: column;
     box-shadow: 11px 13px 7px 0px #78797a;
     background: linear-gradient(to bottom, #fffcfc 5%, #d4d4d4 100%);
     background-color: #fffcfc;
     border-radius: 10px;
     border: 1px solid #adadad;
-    height: 70px;
+    height: 180px;
     width: 360px;
-    /*margin: 145px 20px 0px 50px;
-    text-align: center;
-    vertical-align: middle;*/
+    margin-bottom: 15px;
+ 
 }
-[id="leb"]{
+#leb{
     vertical-align: middle;
 }
 .Info{
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     box-shadow: 11px 13px 7px 0px #78797a;
     background: linear-gradient(to bottom, #fffcfc 5%, #d4d4d4 100%);
     background-color: #fffcfc;
     border-radius: 10px;
+    box-sizing: border-box;
+    padding: 10px;
     border: 1px solid #adadad;
     height: 550px;
     width: 360px;
     
 
+}
+.findresult{
+    margin-bottom: 10px;
+    cursor: pointer;
 }
 input{
     background-color: white;
@@ -96,6 +164,16 @@ input{
     box-sizing: border-box;
     height: 25px;
     text-size-adjust: auto;
+    width: 190px;
+}
+.errorfieldsearch {
+    position: relative;
+    top: 22px;
+    left: -248px;
+    color: red;
+    font-size: 12px;
+    font-weight: bold;
+    margin-right: -243px;
 }
 h5{
 
@@ -105,10 +183,11 @@ h5{
  
 }
 .isburial{
-    background-color: red;
+    background-color: rgb(231, 230, 178);
 }
 .isnotburial{
-    background-color: blue;
+    display: none;
+   /* background-color: rgb(231, 178, 178);*/
 }
 .A{
     width: 165px;
@@ -173,52 +252,45 @@ h5{
     top: 407px;
     left: 178px;
 }
-.J{
-    display: inline-block;
+
+.J {
+    
     width: 0;
     height: 0;
     position: absolute;
-    border-style: solid;
-    border-width: 0px 150px 150px 150px;
-    border-color: transparent transparent  transparent;
-    top: 160px;
-    left: 483px;
+    top: 234px;
+    left: 702px;
     transform: rotate(90deg);
 }
-.J4{
-    display: inline-block;
+.J4 {
+  
     width: 0;
     height: 0;
     position: absolute;
-    border-style: solid;
-    border-width: 0px 150px 150px 150px;
-    border-color: transparent transparent  transparent;
     top: 244px;
-    left: 567px;
+    left: 715px;
 }
-.J3{
-    display: inline-block;
+.J3 {
     width: 0;
     height: 0;
     position: absolute;
-    border-style: solid;
-    border-width: 0px 150px 150px 150px;
-    border-color: transparent transparent transparent;
-    top: 160px;
-    left: 650px;
+    top: 237px;
+    left: 728px;
     transform: rotate(270deg);
 }
 .J2{
-    display: inline-block;
-    width: 0;
-    height: 0;
-    position: absolute;
-    border-style: solid;
-    border-width: 0px 150px 150px 150px;
-    border-color: transparent transparent transparent;
-    top: 73px;
-    left: 567px;
-    transform: rotate(180deg);
+    
+        width: 0;
+        height: 0;
+        margin: 0 auto;
+        transform: rotate(180deg);
+        border: none;
+        position: absolute;
+        top: 217px;
+        left: 716px;
+    
+       
+    
 }
 .K{
     width: 198px;
@@ -610,9 +682,15 @@ h5{
     top: 100px;
     left: -90px;
     border: solid 1px;
-    cursor: pointer;
+    cursor: pointer;    
     transform: rotate(-45deg);
 }
+/*.d1 > #detailquater{
+    background-color: red;
+    transform: rotate(-45deg) translateZ(100px);
+    position: relative;
+    z-index: 10;
+}*/
 .d2{
     width: 16px;
     height: 40px;

@@ -3,8 +3,17 @@
     flex-direction: row;
     font-weight: 800;
     color:#4e4d4d;
-    margin: 10px;
+    margin: 18px;
   
+}
+.userdatafield {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 400px;
+    margin-top: 30px;
 }
 .inputdatamydata {
     background-color: white;
@@ -23,14 +32,20 @@
 .labeldata{
     width: 140px;
 }
-.buttonsavechange{ 
+.datadisplayrow{
+    display: flex;
+    flex-direction: row;
+}
+.buttonsavechange {
+    margin-top: 30px;
     max-width: 300px;
     box-shadow: 4px 4px 0px 0px #6a6868;
     background: linear-gradient(to bottom, #d1c9d1 5%, #4e4d4d 100%);
     background-color: #d1c9d1;
     border-radius: 10px;
     border: 1px solid #e6d5d4;
-    display: inline-block;
+    display: flex;
+    align-self: center;
     cursor: pointer;
     color: #ffffff;
     font-family: Arial;
@@ -55,4 +70,14 @@
         font-size: 11px;
         color: red;
     
+}
+.datasavenotyficacion {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.datasavenotyficacionerror{
+    color: red;
 }
