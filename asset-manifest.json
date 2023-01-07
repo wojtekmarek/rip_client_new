@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/rip_client_new/static/css/main.6643b222.css",
+    "main.js": "/rip_client_new/static/js/main.6d411b0b.js",
+    "index.html": "/rip_client_new/index.html",
+    "main.6643b222.css.map": "/rip_client_new/static/css/main.6643b222.css.map",
+    "main.6d411b0b.js.map": "/rip_client_new/static/js/main.6d411b0b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6643b222.css",
+    "static/js/main.6d411b0b.js"
+  ]
+}
