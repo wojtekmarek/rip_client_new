@@ -54,28 +54,44 @@ class Intentions extends Component {
             var massscribe = localStorage.getItem("MassScribe");
             var textintens = localStorage.getItem("Textintens");
             if (Payment_id != null && amount != null && mass != null && massscribe != null && textintens != null) {
-
+                console.log("");
                 massscribe = massscribe.replace("mszę", "Msza").replace("godzinę", "godzina");
-                data = await (
+               
                     await fetch(this.props.store.backendadress + '/mass/availablemass')
-                ).json();
-                list = [{ value: mass, label: massscribe }];
-                data.forEach(element => {
-                    //console.log(element);
-                    let label = "Msza z dnia  " + element.Date_Of_even.slice(0, 10).split("-").reverse().join("-") + " godzina " + element.Date_Of_even.slice(11, 16);
-                    list.push({ value: element._id, label: label })
+                .then(res => {
+                    res.json();
+                }).then(data => {
+                    console.log(data);
+                    list = [{ value: mass, label: massscribe }];
+                    data.forEach(element => {
+                        //console.log(element);
+                        let label = "Msza z dnia  " + element.Date_Of_even.slice(0, 10).split("-").reverse().join("-") + " godzina " + element.Date_Of_even.slice(11, 16);
+                        list.push({ value: element._id, label: label })
 
-                });
-                this.setState({
-                    intencion: check,
-                    Payment_id: Payment_id,
-                    offering: amount,
-                    mass: mass,
-                    massscribe: massscribe,
-                    intencionscribe: textintens,
-                    intencionrez: true,
+                    });
+                    this.setState({
+                        intencion: check,
+                        Payment_id: Payment_id,
+                        offering: amount,
+                        mass: mass,
+                        massscribe: massscribe,
+                        intencionscribe: textintens,
+                        intencionrez: true,
 
+                    })
                 })
+
+            }else{//doprogramować przekierowanie
+                if(Payment_id==="")
+                {  localStorage.removeItem("Payment_id");
+                localStorage.removeItem("Intention");
+                localStorage.removeItem("Amount");
+                localStorage.removeItem("Mass");
+                localStorage.removeItem("MassScribe");
+                localStorage.removeItem("Textintens");
+
+                }
+                window.location = "/paymentsummary";
             }
         }
 

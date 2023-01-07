@@ -65,6 +65,12 @@ class Payment extends Component {
     });
   }
   setoverpay = () => {
+    localStorage.removeItem("Payment_id");
+                    localStorage.removeItem("Intention");
+                    localStorage.removeItem("Amount");
+                    localStorage.removeItem("Mass");
+                    localStorage.removeItem("MassScribe");
+                    localStorage.removeItem("Textintens");
     this.setState({
 
       isprocecing: true,
